@@ -1,6 +1,6 @@
 library(ggplot2)
 
-data <- read.csv('beerhall.csv', header=TRUE)
+data <- read.csv('./data/beerhall.csv', header=TRUE)
 
 colnames(data) <- c("County", "Region", "Region_Code", "Criminals_per_100k", 
                     "Ale_Beer_Houses_per_100k", "Attendants_at_School_per_10k", 
