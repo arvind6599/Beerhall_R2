@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.4)  14 APR 2024 12:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.4)  14 APR 2024 22:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -520,221 +520,185 @@ Overfull \hbox (109.05383pt too wide) in paragraph at lines 110--110
 -- tidyverse 2.0.0 --[] 
  []
 
-
-Overfull \hbox (15.45387pt too wide) in paragraph at lines 126--126
-[]\T1/pcr/m/n/12 ##  $ county           : chr  "Middlesex" "Surrey" "Kent" "Sus
-sex" ...[] 
- []
-
-
-Overfull \hbox (181.0538pt too wide) in paragraph at lines 126--126
-[]\T1/pcr/m/n/12 ##  $ region_name      : chr  "SouthEastern" "SouthEastern" "S
-outhEastern" "SouthEastern" ...[] 
- []
-
-
-Overfull \hbox (37.05386pt too wide) in paragraph at lines 126--126
-[]\T1/pcr/m/n/12 ##  $ criminals_100k   : int  200 160 160 147 178 205 183 156 
-173 132 ...[] 
- []
-
-
-Overfull \hbox (37.05386pt too wide) in paragraph at lines 126--126
-[]\T1/pcr/m/n/12 ##  $ ale_100k         : int  541 504 552 295 409 568 708 624 
-463 408 ...[] 
- []
-
-
-Overfull \hbox (58.65385pt too wide) in paragraph at lines 126--126
-[]\T1/pcr/m/n/12 ##  $ school_attend_10k: int  560 630 790 820 990 930 1020 113
-0 950 1090 ...[] 
- []
-
-
-Overfull \hbox (94.65384pt too wide) in paragraph at lines 143--143
-[]\T1/pcr/m/n/12 ##      county  region_name region_code criminals_100k ale_100
-k school_attend_10k[] 
- []
-
-
-Overfull \hbox (94.65384pt too wide) in paragraph at lines 143--143
-[]\T1/pcr/m/n/12 ## 1 Middlesex SouthEastern           1            200      54
-1               560[] 
- []
-
-
-Overfull \hbox (94.65384pt too wide) in paragraph at lines 143--143
-[]\T1/pcr/m/n/12 ## 2    Surrey SouthEastern           1            160      50
-4               630[] 
- []
-
-
-Overfull \hbox (94.65384pt too wide) in paragraph at lines 143--143
-[]\T1/pcr/m/n/12 ## 3      Kent SouthEastern           1            160      55
-2               790[] 
- []
-
-
-Overfull \hbox (94.65384pt too wide) in paragraph at lines 143--143
-[]\T1/pcr/m/n/12 ## 4    Sussex SouthEastern           1            147      29
-5               820[] 
- []
-
-
-Overfull \hbox (94.65384pt too wide) in paragraph at lines 143--143
-[]\T1/pcr/m/n/12 ## 5     Hants SouthEastern           1            178      40
-9               990[] 
- []
-
-
-Overfull \hbox (94.65384pt too wide) in paragraph at lines 143--143
-[]\T1/pcr/m/n/12 ## 6     Berks SouthEastern           1            205      56
-8               930[] 
- []
-
 [1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-Overfull \hbox (22.65387pt too wide) in paragraph at lines 164--164
-[]\T1/pcr/m/n/12 ##     county          region_name         region_code   crimi
+Overfull \hbox (37.05386pt too wide) in paragraph at lines 162--162
+[]\T1/pcr/m/n/12 ##  $ County              : chr  "Middlesex" "Surrey" "Kent" "
+Sussex" ...[] 
+ []
+
+
+Overfull \hbox (202.6538pt too wide) in paragraph at lines 162--162
+[]\T1/pcr/m/n/12 ##  $ RegionName          : chr  "SouthEastern" "SouthEastern"
+ "SouthEastern" "SouthEastern" ...[] 
+ []
+
+
+Overfull \hbox (58.65385pt too wide) in paragraph at lines 162--162
+[]\T1/pcr/m/n/12 ##  $ Criminals_100k      : int  200 160 160 147 178 205 183 1
+56 173 132 ...[] 
+ []
+
+
+Overfull \hbox (58.65385pt too wide) in paragraph at lines 162--162
+[]\T1/pcr/m/n/12 ##  $ BeerAle_100k        : int  541 504 552 295 409 568 708 6
+24 463 408 ...[] 
+ []
+
+
+Overfull \hbox (80.25385pt too wide) in paragraph at lines 162--162
+[]\T1/pcr/m/n/12 ##  $ SchoolAttendance_10k: int  560 630 790 820 990 930 1020 
+1130 950 1090 ...[] 
+ []
+
+
+Overfull \hbox (22.65387pt too wide) in paragraph at lines 183--183
+[]\T1/pcr/m/n/12 ##     County           RegionName          RegionCode   Crimi
 nals_100k[] 
  []
 
 
-Overfull \hbox (15.45387pt too wide) in paragraph at lines 164--164
+Overfull \hbox (15.45387pt too wide) in paragraph at lines 183--183
 []\T1/pcr/m/n/12 ##  Length:40          Length:40          Min.   :1.00   Min. 
   : 66.0[] 
  []
 
 
-Overfull \hbox (15.45387pt too wide) in paragraph at lines 164--164
+Overfull \hbox (15.45387pt too wide) in paragraph at lines 183--183
 []\T1/pcr/m/n/12 ##  Class :character   Class :character   1st Qu.:1.00   1st Q
 u.:127.0[] 
  []
 
 
-Overfull \hbox (15.45387pt too wide) in paragraph at lines 164--164
+Overfull \hbox (15.45387pt too wide) in paragraph at lines 183--183
 []\T1/pcr/m/n/12 ##  Mode  :character   Mode  :character   Median :3.00   Media
 n :157.5[] 
  []
 
 
-Overfull \hbox (15.45387pt too wide) in paragraph at lines 164--164
+Overfull \hbox (15.45387pt too wide) in paragraph at lines 183--183
 []\T1/pcr/m/n/12 ##                                        Mean   :3.45   Mean 
   :152.9[] 
  []
 
 
-Overfull \hbox (15.45387pt too wide) in paragraph at lines 164--164
+Overfull \hbox (15.45387pt too wide) in paragraph at lines 183--183
 []\T1/pcr/m/n/12 ##                                        3rd Qu.:5.00   3rd Q
 u.:174.2[] 
  []
 
 
-Overfull \hbox (15.45387pt too wide) in paragraph at lines 164--164
+Overfull \hbox (15.45387pt too wide) in paragraph at lines 183--183
 []\T1/pcr/m/n/12 ##                                        Max.   :8.00   Max. 
   :241.0[] 
  []
 
+<EDA_files/figure-latex/unnamed-chunk-4-1.pdf, id=16, 462.72874pt x 313.17pt>
+File: EDA_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pdf)
+<use EDA_files/figure-latex/unnamed-chunk-4-1.pdf>
+Package pdftex.def Info: EDA_files/figure-latex/unnamed-chunk-4-1.pdf  used on 
+input line 195.
+(pdftex.def)             Requested size: 462.73466pt x 313.174pt.
+<EDA_files/figure-latex/unnamed-chunk-5-1.pdf, id=17, 345.29pt x 321.2pt>
+File: EDA_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type pdf)
+<use EDA_files/figure-latex/unnamed-chunk-5-1.pdf>
+Package pdftex.def Info: EDA_files/figure-latex/unnamed-chunk-5-1.pdf  used on 
+input line 205.
+(pdftex.def)             Requested size: 345.2944pt x 321.20412pt.
+
+Overfull \hbox (52.6087pt too wide) in paragraph at lines 185--206
+\T1/pcr/m/n/12 RegionCode\T1/ptm/m/n/12 (-20) . []
+ []
+
+
+Underfull \hbox (badness 1418) in paragraph at lines 185--206
+\T1/ptm/m/n/12 (+20) The \T1/pcr/m/n/12 BeerAle_100k \T1/ptm/m/n/12 (+20) vari-
+able ap-pears to be bi-modal. The his-togram sug-gests that there
+ []
+
+
+Underfull \hbox (badness 1796) in paragraph at lines 185--206
+\T1/ptm/m/n/12 (+20) are two com-mon lev-els of al-co-hol con-sump-tion within 
+the en-tire pop-u-la-tion, one around
+ []
+
+
+Underfull \hbox (badness 1436) in paragraph at lines 185--206
+\T1/pcr/m/n/12 Crimanals_100k \T1/ptm/m/n/12 (+20) has a mean of 152.9 and a me
+-dian of 157.5, sug-gest-ing the sym-me-
+ []
+
+
+Underfull \hbox (badness 2799) in paragraph at lines 185--206
+\T1/ptm/m/n/12 (+20) try that is also re-flected in the his-togram. \T1/pcr/m/n
+/12 SchoolAttendance_10k \T1/ptm/m/n/12 (+20) is slightly left
+ []
+
+
+Underfull \hbox (badness 1418) in paragraph at lines 185--206
+\T1/ptm/m/n/12 (+20) skewed, while \T1/pcr/m/n/12 WorshipAttendance_2k \T1/ptm/
+m/n/12 (+20) has a var-ied but loosely sym-met-ric dis-tri-bu-tion
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[2]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[3 <./EDA_files/figure-latex/unnamed-chunk-4-1.pdf>]
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family pcr in TS1 encoding.
-(textcomp)             Default family used instead on input line 168.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-68.
+(textcomp)             Default family used instead on input line 212.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
+12.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
 LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
-168.
+212.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family pcr in TS1 encoding.
-(textcomp)             Default family used instead on input line 168.
+(textcomp)             Default family used instead on input line 212.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family pcr in TS1 encoding.
-(textcomp)             Default family used instead on input line 168.
+(textcomp)             Default family used instead on input line 212.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family pcr in TS1 encoding.
-(textcomp)             Default family used instead on input line 168.
+(textcomp)             Default family used instead on input line 212.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family pcr in TS1 encoding.
-(textcomp)             Default family used instead on input line 168.
+(textcomp)             Default family used instead on input line 212.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family pcr in TS1 encoding.
-(textcomp)             Default family used instead on input line 168.
-
-Overfull \hbox (2.09485pt too wide) in paragraph at lines 168--168
-[]\T1/pcr/m/n/12 ## \TS1/cmtt/m/n/12 `\T1/pcr/m/n/12 stat_bin()\TS1/cmtt/m/n/12
- ` \T1/pcr/m/n/12 using \TS1/cmtt/m/n/12 `\T1/pcr/m/n/12 bins = 30\TS1/cmtt/m/n
-/12 `\T1/pcr/m/n/12 . Pick better value with \TS1/cmtt/m/n/12 `\T1/pcr/m/n/12 b
-inwidth\TS1/cmtt/m/n/12 `\T1/pcr/m/n/12 .[] 
- []
-
-<EDA_files/figure-latex/unnamed-chunk-4-1.pdf, id=14, 463.7325pt x 313.17pt>
-File: EDA_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pdf)
-<use EDA_files/figure-latex/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: EDA_files/figure-latex/unnamed-chunk-4-1.pdf  used on 
-input line 170.
-(pdftex.def)             Requested size: 463.73842pt x 313.174pt.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[2{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-}]
-<EDA_files/figure-latex/unnamed-chunk-5-1.pdf, id=20, 346.29375pt x 320.19624pt
->
-File: EDA_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type pdf)
-<use EDA_files/figure-latex/unnamed-chunk-5-1.pdf>
-Package pdftex.def Info: EDA_files/figure-latex/unnamed-chunk-5-1.pdf  used on 
-input line 172.
-(pdftex.def)             Requested size: 346.29817pt x 320.20033pt.
+(textcomp)             Default family used instead on input line 212.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family pcr in TS1 encoding.
-(textcomp)             Default family used instead on input line 179.
+(textcomp)             Default family used instead on input line 212.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family pcr in TS1 encoding.
-(textcomp)             Default family used instead on input line 179.
-Package textcomp Info: Symbol \textasciigrave not provided by
-(textcomp)             font family pcr in TS1 encoding.
-(textcomp)             Default family used instead on input line 179.
-Package textcomp Info: Symbol \textasciigrave not provided by
-(textcomp)             font family pcr in TS1 encoding.
-(textcomp)             Default family used instead on input line 179.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[3 <./EDA_files/figure-latex/unnamed-chunk-4-1.pdf> <./EDA_files/figure-latex/u
-nnamed-chunk-5-1.pdf>]
-Package textcomp Info: Symbol \textasciigrave not provided by
-(textcomp)             font family pcr in TS1 encoding.
-(textcomp)             Default family used instead on input line 179.
-Package textcomp Info: Symbol \textasciigrave not provided by
-(textcomp)             font family pcr in TS1 encoding.
-(textcomp)             Default family used instead on input line 179.
-Package textcomp Info: Symbol \textasciigrave not provided by
-(textcomp)             font family pcr in TS1 encoding.
-(textcomp)             Default family used instead on input line 179.
-Package textcomp Info: Symbol \textasciigrave not provided by
-(textcomp)             font family pcr in TS1 encoding.
-(textcomp)             Default family used instead on input line 179.
-<EDA_files/figure-latex/unnamed-chunk-6-1.pdf, id=40, 459.7175pt x 315.1775pt>
+(textcomp)             Default family used instead on input line 212.
+<EDA_files/figure-latex/unnamed-chunk-6-1.pdf, id=35, 459.7175pt x 315.1775pt>
 File: EDA_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (type pdf)
 <use EDA_files/figure-latex/unnamed-chunk-6-1.pdf>
 Package pdftex.def Info: EDA_files/figure-latex/unnamed-chunk-6-1.pdf  used on 
-input line 181.
+input line 214.
 (pdftex.def)             Requested size: 459.74442pt x 315.19595pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -744,24 +708,34 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4 <./EDA_files/figure-latex/unnamed-chunk-6-1.pdf>] (./EDA.aux) ) 
+[4{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+} <./EDA_files/figure-latex/unnamed-chunk-5-1.pdf>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[5 <./EDA_files/figure-latex/unnamed-chunk-6-1.pdf>] (./EDA.aux) ) 
 Here is how much of TeX's memory you used:
- 13668 strings out of 476025
- 217418 string characters out of 5790018
- 1871388 words of memory out of 5000000
- 33852 multiletter control sequences out of 15000+600000
- 539149 words of font info for 79 fonts, out of 8000000 for 9000
+ 13723 strings out of 476025
+ 217974 string characters out of 5790018
+ 1866388 words of memory out of 5000000
+ 33860 multiletter control sequences out of 15000+600000
+ 545280 words of font info for 108 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 77i,12n,81p,1000b,631s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 77i,11n,81p,1000b,482s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/t
 exlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/tex
 live/2023/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/202
 3/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2023/texmf-di
 st/fonts/type1/urw/times/utmr8a.pfb>
-Output written on EDA.pdf (4 pages, 77942 bytes).
+Output written on EDA.pdf (5 pages, 88638 bytes).
 PDF statistics:
- 83 PDF objects out of 1000 (max. 8388607)
- 59 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
- 16408 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 97 PDF objects out of 1000 (max. 8388607)
+ 72 compressed objects within 1 object stream
+ 12 named destinations out of 1000 (max. 500000)
+ 22568 words of extra memory for PDF output out of 24883 (max. 10000000)
 
