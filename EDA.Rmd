@@ -69,7 +69,9 @@ data %>% pivot_longer(cols = c( Criminals_100k, BeerAle_100k,SchoolAttendance_10
   ggplot(aes(value)) + facet_wrap(~ name, scales = "free") + geom_histogram(bins = 15)
 
 ```
-The `BeerAle_100k` variable appears to be bimodal. The histogram suggests that there are two common levels of alcohol consumption within the entire population, one around the 200, and another around 400 per 100,000 population. According to the data summary, `Crimanals_100k` has a mean of 152.9 and a median of 157.5, suggesting the symmetry that is also reflected in the histogram. `SchoolAttendance_10k` is slightly left skewed, while `WorshipAttendance_2k` has a varied but loosely symmetric distribution 
+The `BeerAle_100k` variable appears to be bimodal. The histogram suggests that there are two common levels of alcohol consumption within the entire population, one around the 200, and another around 400 per 100,000 population. According to the data summary, `Crimanals_100k` has a mean of 152.9 and a median of 157.5, suggesting the symmetry that is also reflected in the histogram. `SchoolAttendance_10k` is slightly left skewed, while `WorshipAttendance_2k` has a varied but loosely symmetric distribution. 
+
+The linear dependence between each pair of numeric variables is expressed in the following correlation matrix:
 ```{r}
 # analyse correlation between variables
 par(mfrow = c(1, 1))
@@ -77,7 +79,7 @@ M <- cor(numeric_data)
 corrplot(cor(numeric_data), method = "number")
 ```
 
-
+There appears to be negligible linear dependence between worship attendance and criminality. School attendance is slightly negatively correlated with the prevalence of crime. Criminal behaviour is positively correlated with `BeerAle_100k` with a correlation coefficient of 0.46, suggesting that counties with a more dominant culture of frequenting bars and pubs are also where more crime happens. In order to better visualise these dependencies, we regress `Criminals_100k` on each of these variables.
 
 ```{r}
 # regression plots
@@ -92,5 +94,4 @@ fig4 <- ggplot(data, aes(WorshipAttendance_2k, Criminals_100k)) + geom_point() +
 
 ggarrange(fig1, fig2, fig3, fig4)
 ```
-
-
+There appears to be a very clear linear dependence of criminal behaviour on bar attendance, with most datapoints falling within the 95% confidence interval of the regression line. There is high variation of criminality across school attendance and worship attendance.
