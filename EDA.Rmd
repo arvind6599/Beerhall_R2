@@ -13,26 +13,25 @@ header-includes:
   - \usepackage{fancyhdr}
   - \pagestyle{fancy}
   - \fancyhf{}
-  - \rhead{Group Member Names}
+  - \rhead{Arvind Menon, Lennart Platon Kutzschebauch, Nisrine Bachar, Jayati Sood}
   - \cfoot{\thepage}
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-```
-
-## R Markdown
-```{r}
 library(conflicted)
 library(ggplot2)
 library(GGally)
 library(ggpubr)
 library(tidyverse)
 library(corrplot)
+library(kableExtra)
+
 require(gridExtra)
 conflict_prefer("filter", "dplyr")
 conflict_prefer("lag", "dplyr")
 ```
+
 # Introduction
 
 We as human beings like to divide actions into moral and amoral. Some of these amoral actions, such as murder, theft and fraud, are codified in law and we call those transgressions crimes. It is in our best interest to avoid crime happening. Therefore, we try to punish those that commit them in hopes of it being a deterrent for future repetition. However, there might be other ways in which to minimise crime. In addition, we see that crime isn't happening uniformly everywhere. This leads us to the question: what makes a crime more likely to happen in a region?\
@@ -46,14 +45,14 @@ We begin our analysis with a look at the first few lines of our dataset.
 data <- read.csv('./data/beerhall.csv')
 colnames(data)<- c("County", "RegionName", "RegionCode", "Criminals_100k", "BeerAle_100k","SchoolAttendance_10k", "WorshipAttendance_2k")
 
-writeLines("\nFirst few data elements:\n")
-str(data)
+writeLines("First few data elements:\n")
+kable(head(data))
 writeLines("\n")
 # head(data)
 # writeLines("\n")
 
 ```
-```{r}
+```{r, fig.width=5, fig.height=3}
 # returns minimum, maximum, 1st quartile, median, mean and 3rd
 #quartile of every variable
 writeLines("Data summary:\n")
@@ -62,17 +61,20 @@ writeLines("\n")
 
 ```
 The dataset contains information about 40 different counties.`County` and `RegionName` are categorical variables, and each of the 8 regions is assigned a `RegionCode`, which is a number from 1 to 8. `Criminals_100k` is the number of criminals per 100,000 inhabitants for any particular county. Similarly, `BeerAle_100k`, `SchoolAttendance_10k` and `WorshipAttendance_2k` are social indicators measured numerically as a proportion of the population. In order to better visualise the numerical data, we plot histograms of each numerical variable, with the exception of the categorical `RegionCode`.
-```{r}
+
+
+```{r, fig.width=5, fig.height=3.5, fig.align='center'}
 # plot variable-wise histograms
 numeric_data <- data[, sapply(data, is.numeric)]
 data %>% pivot_longer(cols = c( Criminals_100k, BeerAle_100k,SchoolAttendance_10k, WorshipAttendance_2k)) %>%
   ggplot(aes(value)) + facet_wrap(~ name, scales = "free") + geom_histogram(bins = 15)
 
 ```
+
 The `BeerAle_100k` variable appears to be bimodal. The histogram suggests that there are two common levels of alcohol consumption within the entire population, one around the 200, and another around 400 per 100,000 population. According to the data summary, `Crimanals_100k` has a mean of 152.9 and a median of 157.5, suggesting the symmetry that is also reflected in the histogram. `SchoolAttendance_10k` is slightly left skewed, while `WorshipAttendance_2k` has a varied but loosely symmetric distribution. 
 
 The linear dependence between each pair of numeric variables is expressed in the following correlation matrix:
-```{r}
+```{r, fig.width=6, fig.height=4, fig.align='center'}
 # analyse correlation between variables
 par(mfrow = c(1, 1))
 M <- cor(numeric_data)
@@ -81,7 +83,7 @@ corrplot(cor(numeric_data), method = "number")
 
 There appears to be negligible linear dependence between worship attendance and criminality. School attendance is slightly negatively correlated with the prevalence of crime. Criminal behaviour is positively correlated with `BeerAle_100k` with a correlation coefficient of 0.46, suggesting that counties with a more dominant culture of frequenting bars and pubs are also where more crime happens. In order to better visualise these dependencies, we regress `Criminals_100k` on each of these variables.
 
-```{r}
+```{r, fig.width=5, fig.height=3.5, fig.align='center', message=FALSE, warning=FALSE}
 # regression plots
 fig1 <- ggplot(data, aes(BeerAle_100k, Criminals_100k)) + geom_point() +
   stat_smooth(method = "lm")
@@ -94,4 +96,5 @@ fig4 <- ggplot(data, aes(WorshipAttendance_2k, Criminals_100k)) + geom_point() +
 
 ggarrange(fig1, fig2, fig3, fig4)
 ```
+
 There appears to be a very clear linear dependence of criminal behaviour on bar attendance, with most datapoints falling within the 95% confidence interval of the regression line. There is high variation of criminality across school attendance and worship attendance.
