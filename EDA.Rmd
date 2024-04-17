@@ -45,7 +45,7 @@ We begin our analysis with a look at the first few lines of our dataset.
 data <- read.csv('./data/beerhall.csv')
 colnames(data)<- c("County", "RegionName", "RegionCode", "Criminals_100k", "BeerAle_100k","SchoolAttendance_10k", "WorshipAttendance_2k")
 
-writeLines("First few data elements:\n")
+# writeLines("First few data elements:\n")
 kable(head(data))
 writeLines("\n")
 # head(data)
