@@ -103,3 +103,144 @@ ggarrange(fig1, fig2, fig3, fig4)
 ```
 
 There appears to be a very clear linear dependence of criminal behaviour on bar attendance, with most datapoints falling within the 95% confidence interval of the regression line. There is high variation of criminality across school attendance and worship attendance.
+
+## Model Fitting
+
+The model is fitted using polynomial regression. In order to predict Criminals per 100k population, we use a polynomial regression model which uses Ale/Beer Houses per 100k, Attendants \@ school per 10k, and Attendants \@ public worship per 2000 as the features.
+
+Mathematically, the model can be represented as:
+
+A polynomial regression model of degree n with three features (x1, x2, x3) can be represented as follows:
+
+$y = \beta_0 + \beta_{11}x_1 + \beta_{12}x_1^2 + ... + \beta_{1n}x_1^n + \beta_{21}x_2 + \beta_{22}x_2^2 + ... + \beta_{2n}x_2^n + \beta_{31}x_3 + \beta_{32}x_3^2 + ... + \beta_{3n}x_3^n + \epsilon$
+
+Where:
+
+y is Criminals per 100k population x1, x2, x3 are the independent variables [Ale/Beer Houses per 100k, Attendants \@ school per 10k, and Attendants \@ public worship per 2000] β0, βij are the coefficients of the model where i is the feature index and j is the degree of the polynomial ε is the error term
+
+We choose the model based on the Exploratory data analysis and the correlation between the features and the target variable. On top of the linear relation, we also add polynomial terms to capture the non-linear relation between the features and the target variable.
+
+```{r}
+
+# Fit a multiple linear regression model
+model <- lm(Criminals_100k ~ BeerAle_100k + 
+              SchoolAttendance_10k + 
+              WorshipAttendance_2k, data = data)
+L1O<-1:8
+for (k in 1:8) {
+  output<-0
+  for (l in 1:40){
+      traindata <- data[-l,]
+      modelA <- lm(Criminals_100k ~ polym(BeerAle_100k, SchoolAttendance_10k, degree =  k), data = traindata)
+      output <- output+(predict(modelA, newdata = data)[l]-data$Criminals_100k[l])^2
+  }
+  L1O[k]<-(output/40)**0.5
+}
+
+L2O<-1:8
+for (k in 1:8) {
+  output<-0
+  for (l in 1:39){
+  for (x in (l+1):40) {
+    traindata <- data[-c(x,l),]
+    modelA <- lm(Criminals_100k ~ polym(BeerAle_100k, SchoolAttendance_10k, degree =  k), data = traindata)
+    output <- output+(predict(modelA, newdata = data)[x]-data$Criminals_100k[x])^2
+    output <- output+(predict(modelA, newdata = data)[l]-data$Criminals_100k[l])^2
+  }
+  }
+  L2O[k]<-(2*output/(40*39))**0.5
+}
+modelF <- lm(Criminals_100k ~ polym(BeerAle_100k, SchoolAttendance_10k, degree =  4), data = data)
+modelF2 <- lm(Criminals_100k ~ polym(BeerAle_100k, SchoolAttendance_10k, degree =  3), data = data)
+
+```
+
+We choose the degree of the polynomial based on the leave-one-out and leave-two-out cross-validations results, that we run on polynomials of degrees up to 8, where we keep the two best performing models, namely the polynomial regressions of degrees 3 and 4 and compare them to the linear model (with degree 1) using Information Criteria. We get for the linear model AIC=`{r AIC(model)}` and BIC =`{r BIC(model)}`, for the model of degree 3 AIC=`{r AIC(modelF2)}` and BIC =`{r BIC(modelF2)}` and for the model of degree 4 AIC=`{r AIC(modelF)}` and BIC =`{r BIC(modelF)}`. Using the likelihood ratio test, we reject le null hypothesis at a 5% significance level that the restricted linear model fits better the data and we keep the unrestricted model. Therefore, the polynomial model of degree 3 provides a significantly better fit to the data.
+
+The graph below shows the errors for different polynomial degrees up to 6 using cross-validation
+
+```{r}
+# Create a first line
+plot(1:6, L1O[1:6], type = "b", frame = FALSE, pch = 19, 
+     col = "red", xlab = "Degrees", ylab = "Error", ylim = c(35, 100))
+# Add a second line
+lines(1:6, L2O[1:6], pch = 18, col = "blue", type = "b", lty = 2)
+# Add a legend to the plot
+legend("topleft", legend=c("L1O", "L2O"),
+       col=c("red", "blue"), lty = 1:2, cex=0.8)
+
+
+```
+
+Here are the summary statistics of the model
+
+```{r}
+stargazer(modelF2, type = "text", title = "Regression Results")
+```
+
+## Model assessment
+
+We will first verify that our model assumptions hold :
+
+### Zero mean error terms
+
+```{r}
+# Get residuals from the model
+residuals <- residuals(modelF2)
+
+# Compute the mean of the residuals
+mean_error <- mean(residuals)
+
+# Print the mean error
+#print(mean_error)
+```
+We compute our model residuals mean and get : `{r print(mean_error)}`
+
+
+### Homoscedastic error term 
+
+```{r}
+# Assuming modelF2 is your regression model
+plot(modelF2, which = 1)
+
+```
+
+
+
+We see from the plot above that our residuals are almost homoscedastic
+
+
+### Error terms are uncorrelated 
+
+```{r}
+#Autocorrelation function
+acf(residuals(modelF2))
+```
+
+```{r}
+# Perform Durbin-Watson test for autocorrelation
+#durbinWatsonTest(modelF2)
+
+```
+Both the Autocorrelation function plot and the Durbin-Watson test suggest that the autocorrelation is not too strong, so we can neglect it especially that we have a small sample
+
+### Error terms are normally distributed
+
+
+
+```{r}
+# Q-Q plot of residuals
+qqnorm(residuals(modelF2))
+qqline(residuals(modelF2))
+```
+```
+
+Given that our data set is small, we can assume from the Normal QQ plot that our residuals are normally distributed
+
+
+
+
+
+
+
+
