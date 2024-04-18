@@ -26,8 +26,10 @@ library(ggpubr)
 library(tidyverse)
 library(corrplot)
 library(kableExtra)
-
+library(knitr)
+library(lmtest)
 require(gridExtra)
+library(stargazer)
 conflict_prefer("filter", "dplyr")
 conflict_prefer("lag", "dplyr")
 ```
@@ -38,9 +40,10 @@ We as human beings like to divide actions into moral and amoral. Some of these a
 Clay[1857], concentrating on crime in England, analysed the following characteristics: Beer-(ale)-house numbers, worship attendance and public school attendance. The argument he provides for the latter two, is both allow for the public access to Christian moral values (although he criticises that the ability to read on its own is not enough). It is to note, the "public schools" mentioned by Clay concentrated mostly on teaching read and writing and were not free but accepted anyone who could effort it. In the case of beer-houses, he argues "the temptation to animal pleasure" corrupts a person. To help his case he tries to show the positive correlation of beer-houses, the negative correlations of public school and worship attendance to crime.\
 In this paper we want to verify (or deny) these effects of the aforementioned characteristics and try to predict crime rate from them using the same data set. However, before starting it is important to mention, as noticed by Clay[1857], the recorded crime rate may be inaccurate because of systematic reasons since each county handles crime and punishment differently on the executive and juridical levels. This will impact the accuracy of all possible analysis and models.
 
-# Exploratory Data Analysis 
+# Exploratory Data Analysis
 
-We begin our analysis with a look at the first few lines of our dataset. 
+We begin our analysis with a look at the first few lines of our dataset.
+
 ```{r}
 data <- read.csv('./data/beerhall.csv')
 colnames(data)<- c("County", "RegionName", "RegionCode", "Criminals_100k", "BeerAle_100k","SchoolAttendance_10k", "WorshipAttendance_2k")
@@ -52,6 +55,7 @@ writeLines("\n")
 # writeLines("\n")
 
 ```
+
 ```{r, fig.width=5, fig.height=3}
 # returns minimum, maximum, 1st quartile, median, mean and 3rd
 #quartile of every variable
@@ -60,8 +64,8 @@ summary(data)
 writeLines("\n")
 
 ```
-The dataset contains information about 40 different counties.`County` and `RegionName` are categorical variables, and each of the 8 regions is assigned a `RegionCode`, which is a number from 1 to 8. `Criminals_100k` is the number of criminals per 100,000 inhabitants for any particular county. Similarly, `BeerAle_100k`, `SchoolAttendance_10k` and `WorshipAttendance_2k` are social indicators measured numerically as a proportion of the population. In order to better visualise the numerical data, we plot histograms of each numerical variable, with the exception of the categorical `RegionCode`.
 
+The dataset contains information about 40 different counties.`County` and `RegionName` are categorical variables, and each of the 8 regions is assigned a `RegionCode`, which is a number from 1 to 8. `Criminals_100k` is the number of criminals per 100,000 inhabitants for any particular county. Similarly, `BeerAle_100k`, `SchoolAttendance_10k` and `WorshipAttendance_2k` are social indicators measured numerically as a proportion of the population. In order to better visualise the numerical data, we plot histograms of each numerical variable, with the exception of the categorical `RegionCode`.
 
 ```{r, fig.width=5, fig.height=3.5, fig.align='center'}
 # plot variable-wise histograms
@@ -71,9 +75,10 @@ data %>% pivot_longer(cols = c( Criminals_100k, BeerAle_100k,SchoolAttendance_10
 
 ```
 
-The `BeerAle_100k` variable appears to be bimodal. The histogram suggests that there are two common levels of alcohol consumption within the entire population, one around the 200, and another around 400 per 100,000 population. According to the data summary, `Crimanals_100k` has a mean of 152.9 and a median of 157.5, suggesting the symmetry that is also reflected in the histogram. `SchoolAttendance_10k` is slightly left skewed, while `WorshipAttendance_2k` has a varied but loosely symmetric distribution. 
+The `BeerAle_100k` variable appears to be bimodal. The histogram suggests that there are two common levels of alcohol consumption within the entire population, one around the 200, and another around 400 per 100,000 population. According to the data summary, `Crimanals_100k` has a mean of 152.9 and a median of 157.5, suggesting the symmetry that is also reflected in the histogram. `SchoolAttendance_10k` is slightly left skewed, while `WorshipAttendance_2k` has a varied but loosely symmetric distribution.
 
 The linear dependence between each pair of numeric variables is expressed in the following correlation matrix:
+
 ```{r, fig.width=6, fig.height=4, fig.align='center'}
 # analyse correlation between variables
 par(mfrow = c(1, 1))
