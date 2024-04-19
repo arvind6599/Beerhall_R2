@@ -32,6 +32,11 @@ library(knitr)
 library(lmtest)
 require(gridExtra)
 library(stargazer)
+library(sjPlot)
+library(sjmisc)
+library(sjlabelled)
+library(broom)
+
 conflict_prefer("filter", "dplyr")
 conflict_prefer("lag", "dplyr")
 ```
@@ -62,7 +67,9 @@ writeLines("\n")
 # returns minimum, maximum, 1st quartile, median, mean and 3rd
 #quartile of every variable
 writeLines("Data summary:\n")
-summary(data)
+summ<-summary(data)
+colnames(summ)<-c("County", "Region Name ", "Region Code", "Criminals per 100k population", "Ale/Beer Houses per 100k", "Attendants @ school per 10k", "Attendants @ public worship per 2000" )
+kable(summ)
 writeLines("\n")
 
 ```
@@ -164,7 +171,7 @@ The graph below shows the errors for different polynomial degrees up to 6 using 
 ```{r}
 # Create a first line
 plot(1:6, L1O[1:6], type = "b", frame = FALSE, pch = 19, 
-     col = "red", xlab = "Degrees", ylab = "Error", ylim = c(35, 100))
+     col = "red", xlab = "Degrees", ylab = "Error", ylim = c(35, 100), main = "Cross validation errors per polynomial degree")
 # Add a second line
 lines(1:6, L2O[1:6], pch = 18, col = "blue", type = "b", lty = 2)
 # Add a legend to the plot
@@ -177,36 +184,51 @@ legend("topleft", legend=c("L1O", "L2O"),
 We choose the degree of the polynomial based on the leave-one-out and leave-two-out cross-validations results, that we run on polynomials of degrees up to 6, where we keep the two best performing models, namely the polynomial regressions of degrees 3 and 4 and compare them to the linear model (with degree 1) using Information Criteria. We get the following results :
 
 ```{r}
-AIC(model, modelF, modelF1)
-BIC(model, modelF, modelF1)
+aic<-AIC(model, modelF, modelF1)
+bic<-BIC(model, modelF, modelF1)
+
+bic_lc<-bic[,ncol(bic)]
+merged_table <- cbind(aic, bic_lc)
+colnames(merged_table)<-c("DF", "AIC", "BIC")
+rownames(merged_table)<-c("Linear model", "Degree 3 polynomial", "Degree 4 Polynomial")
+
+# Print merged table
+kable(merged_table, caption ="Information Criteria")
+
 ```
 
-We can see that the two unrestricted models fit better the data than the simpler linear model. Using the likelihood ratio test, we compare them and we fail to reject the null hypothesis at a 5% significance level that the restricted linear model fits better the data and we keep the restricted model. Therefore, the polynomial model of degree 3 provides a significantly better fit to the data.
 ```{r}
-lrtest(modelF1,modelF)
+lr_test<-lrtest(modelF,modelF1)
+
 ```
+
+We can see that the two unrestricted models fit better the data than the simpler linear model. Using the likelihood ratio test, we compare them and with a p-value of `{r cat(lr_test$`Pr(>Chisq)`[2], "\n")}`we fail to reject the null hypothesis at a 5% significance level that the restricted linear model fits better the data and we keep the restricted model. Therefore, the polynomial model of degree 3 provides a significantly better fit to the data.
 
 Then, we run a stepwise selection to compare all possible models and pick the one that fits data the best 
 
 ```{r}
-modelF2<- step(lm(Criminals_100k ~ BeerAle_100k+ SchoolAttendance_10k+ WorshipAttendance_2k
-                 +I(BeerAle_100k^2)+ I(SchoolAttendance_10k^2)+ I(WorshipAttendance_2k^2)
-                 +I(BeerAle_100k^3)+ I(SchoolAttendance_10k^3)+ I(WorshipAttendance_2k^3), data=data))
+modelF2<- step(lm(Criminals_100k ~ BeerAle_100k+ SchoolAttendance_10k+ WorshipAttendance_2k+I(BeerAle_100k^2)+ I(SchoolAttendance_10k^2)+ I(WorshipAttendance_2k^2)+I(BeerAle_100k^3)+ I(SchoolAttendance_10k^3)+ I(WorshipAttendance_2k^3), data=data), trace=0)
 
 ```
+
+
 
 
 Here are the summary statistics of the model
 
+  
 ```{r}
-stargazer(modelF2, type = "text", title = "Regression Results")
+tab_model(modelF2)
 ```
+  
+  
+  
 
 ## Model assessment
 
 In this section, we will verify the conditions for our regressions model to hold, namely that our residuals have zero mean, are uncorrelated, are homoscedastic and are normally distributed.
 
-### Zero mean error terms
+##### Zero mean error terms
 
 ```{r}
 # Get residuals from the model
@@ -215,17 +237,15 @@ residuals <- residuals(modelF2)
 # Compute the mean of the residuals
 mean_error <- mean(residuals)
 
-# Print the mean error
-#print(mean_error)
 ```
 We compute our model residuals mean and get : `{r print(mean_error)}`
 
 
-### Homoscedastic error term 
+##### Homoscedastic error term 
 
 ```{r}
 # Assuming modelF2 is your regression model
-plot(modelF2, which = 1)
+plot(modelF2, which = 1, main = " ", sub.caption=" ")
 
 ```
 
@@ -234,21 +254,20 @@ plot(modelF2, which = 1)
 We see from the plot above that our residuals are almost homoscedastic
 
 
-### Error terms are uncorrelated 
+##### Error terms are uncorrelated 
 
 ```{r}
 #Autocorrelation function
-acf(residuals(modelF2))
+acf(residuals(modelF2), main = "Series residuals")
 ```
 
 ```{r}
 # Perform Durbin-Watson test for autocorrelation
-#durbinWatsonTest(modelF2)
-
+dw<-dwtest(modelF2)
 ```
-Both the Autocorrelation function plot and the Durbin-Watson test suggest that the autocorrelation is not too strong, so we can neglect it especially that we have a small sample
+Both the Autocorrelation function plot and the Durbin-Watson test (with autocorrelation ```{r} cat(dw$r},"\n)``` and p-value `{r cat(dw$p},"\n)}` ) suggest that we have a weak positive autocorrelation at lag 1.
 
-### Error terms are normally distributed
+##### Error terms are normally distributed
 
 
 
