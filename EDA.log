@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.8)  18 APR 2024 17:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.8)  19 APR 2024 14:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -805,11 +805,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [3 <./EDA_files/figure-latex/unnamed-chunk-4-1.pdf>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 263.
+(Font)              <12> on input line 267.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 263.
+(Font)              <8> on input line 267.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 263.
+(Font)              <6> on input line 267.
 
 ! LaTeX Error: Unicode character β (U+03B2)
                not set up for use with LaTeX.
@@ -818,7 +818,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.269 Attendants @ public worship per 2000{]} β
+l.273 Attendants @ public worship per 2000{]} β
                                                 0, βij are the coefficients of
  
 Here is how much of TeX's memory you used:

@@ -2,19 +2,21 @@
 title: "Your Document Title"
 author: "Author Name"
 date: "`r format(Sys.Date(), '%d %B, %Y')`"
-output: 
+output:
+  html_document:
+    df_print: paged
   pdf_document:
     includes:
       in_header: header.tex
-geometry: "margin=0.87in" # 2.5 cm approx 0.984 inches, use 0.87in for closer approximation
+geometry: margin=0.87in
 fontsize: 12pt
 mainfont: Times New Roman
 header-includes:
-  - \usepackage{fancyhdr}
-  - \pagestyle{fancy}
-  - \fancyhf{}
-  - \rhead{Arvind Menon, Lennart Platon Kutzschebauch, Nisrine Bachar, Jayati Sood}
-  - \cfoot{\thepage}
+- \usepackage{fancyhdr}
+- \pagestyle{fancy}
+- \fancyhf{}
+- \rhead{Arvind Menon, Lennart Platon Kutzschebauch, Nisrine Bachar, Jayati Sood}
+- \cfoot{\thepage}
 ---
 
 ```{r setup, include=FALSE, message=FALSE, warning=FALSE}
@@ -106,7 +108,7 @@ There appears to be a very clear linear dependence of criminal behaviour on bar 
 
 ## Model Fitting
 
-The model is fitted using polynomial regression. In order to predict Criminals per 100k population, we use a polynomial regression model which uses Ale/Beer Houses per 100k, Attendants \@ school per 10k, and Attendants \@ public worship per 2000 as the features.
+The model is fitted using polynomial regression. In order to predict Criminals per 100k population, we use a polynomial regression model which uses Ale/Beer Houses per 100k, Attendants \@ school per 10k, and Attendants \@ public worship per 2000 as the features. We include the variable Attendants \@ public worship per 2000 in our analysis even if it has no correlation with the variable Criminals per 100k as no correlation doesn't mean no causation, it only suggests that there is no linear association.
 
 Mathematically, the model can be represented as:
 
@@ -126,36 +128,36 @@ We choose the model based on the Exploratory data analysis and the correlation b
 model <- lm(Criminals_100k ~ BeerAle_100k + 
               SchoolAttendance_10k + 
               WorshipAttendance_2k, data = data)
-L1O<-1:8
-for (k in 1:8) {
+L1O<-1:6
+for (k in 1:6) {
   output<-0
   for (l in 1:40){
-      traindata <- data[-l,]
-      modelA <- lm(Criminals_100k ~ polym(BeerAle_100k, SchoolAttendance_10k, degree =  k), data = traindata)
-      output <- output+(predict(modelA, newdata = data)[l]-data$Criminals_100k[l])^2
+    traindata <- data[-l,]
+    modelA <- lm(Criminals_100k ~ polym(BeerAle_100k, degree= k)+polym( SchoolAttendance_10k,degree = k) +polym (WorshipAttendance_2k, degree =  k), data = traindata)
+    output <- output+(predict(modelA, newdata = data)[l]-data$Criminals_100k[l])^2
   }
   L1O[k]<-(output/40)**0.5
 }
 
-L2O<-1:8
-for (k in 1:8) {
+L2O<-1:6
+for (k in 1:6) {
   output<-0
   for (l in 1:39){
-  for (x in (l+1):40) {
-    traindata <- data[-c(x,l),]
-    modelA <- lm(Criminals_100k ~ polym(BeerAle_100k, SchoolAttendance_10k, degree =  k), data = traindata)
-    output <- output+(predict(modelA, newdata = data)[x]-data$Criminals_100k[x])^2
-    output <- output+(predict(modelA, newdata = data)[l]-data$Criminals_100k[l])^2
-  }
+    for (x in (l+1):40) {
+      traindata <- data[-c(x,l),]
+      modelA <- lm(Criminals_100k ~ polym(BeerAle_100k, degree= k)+polym( SchoolAttendance_10k,degree = k) +polym (WorshipAttendance_2k, degree =  k), data = traindata)
+      output <- output+(predict(modelA, newdata = data)[x]-data$Criminals_100k[x])^2
+      output <- output+(predict(modelA, newdata = data)[l]-data$Criminals_100k[l])^2
+    }
   }
   L2O[k]<-(2*output/(40*39))**0.5
 }
-modelF <- lm(Criminals_100k ~ polym(BeerAle_100k, SchoolAttendance_10k, degree =  4), data = data)
-modelF2 <- lm(Criminals_100k ~ polym(BeerAle_100k, SchoolAttendance_10k, degree =  3), data = data)
+
+modelF1<- lm(Criminals_100k ~ polym(BeerAle_100k, degree= 4)+polym( SchoolAttendance_10k,degree = 4) +polym (WorshipAttendance_2k, degree =  4), data=data)
+
+modelF<- lm(Criminals_100k ~ polym(BeerAle_100k, degree= 3)+polym( SchoolAttendance_10k,degree = 3) +polym (WorshipAttendance_2k, degree =  3), data=data)
 
 ```
-
-We choose the degree of the polynomial based on the leave-one-out and leave-two-out cross-validations results, that we run on polynomials of degrees up to 8, where we keep the two best performing models, namely the polynomial regressions of degrees 3 and 4 and compare them to the linear model (with degree 1) using Information Criteria. We get for the linear model AIC=`{r AIC(model)}` and BIC =`{r BIC(model)}`, for the model of degree 3 AIC=`{r AIC(modelF2)}` and BIC =`{r BIC(modelF2)}` and for the model of degree 4 AIC=`{r AIC(modelF)}` and BIC =`{r BIC(modelF)}`. Using the likelihood ratio test, we reject le null hypothesis at a 5% significance level that the restricted linear model fits better the data and we keep the unrestricted model. Therefore, the polynomial model of degree 3 provides a significantly better fit to the data.
 
 The graph below shows the errors for different polynomial degrees up to 6 using cross-validation
 
@@ -172,6 +174,28 @@ legend("topleft", legend=c("L1O", "L2O"),
 
 ```
 
+We choose the degree of the polynomial based on the leave-one-out and leave-two-out cross-validations results, that we run on polynomials of degrees up to 6, where we keep the two best performing models, namely the polynomial regressions of degrees 3 and 4 and compare them to the linear model (with degree 1) using Information Criteria. We get the following results :
+
+```{r}
+AIC(model, modelF, modelF1)
+BIC(model, modelF, modelF1)
+```
+
+We can see that the two unrestricted models fit better the data than the simpler linear model. Using the likelihood ratio test, we compare them and we fail to reject the null hypothesis at a 5% significance level that the restricted linear model fits better the data and we keep the restricted model. Therefore, the polynomial model of degree 3 provides a significantly better fit to the data.
+```{r}
+lrtest(modelF1,modelF)
+```
+
+Then, we run a stepwise selection to compare all possible models and pick the one that fits data the best 
+
+```{r}
+modelF2<- step(lm(Criminals_100k ~ BeerAle_100k+ SchoolAttendance_10k+ WorshipAttendance_2k
+                 +I(BeerAle_100k^2)+ I(SchoolAttendance_10k^2)+ I(WorshipAttendance_2k^2)
+                 +I(BeerAle_100k^3)+ I(SchoolAttendance_10k^3)+ I(WorshipAttendance_2k^3), data=data))
+
+```
+
+
 Here are the summary statistics of the model
 
 ```{r}
@@ -180,7 +204,7 @@ stargazer(modelF2, type = "text", title = "Regression Results")
 
 ## Model assessment
 
-We will first verify that our model assumptions hold :
+In this section, we will verify the conditions for our regressions model to hold, namely that our residuals have zero mean, are uncorrelated, are homoscedastic and are normally distributed.
 
 ### Zero mean error terms
 
@@ -235,7 +259,7 @@ qqline(residuals(modelF2))
 ```
 ```
 
-Given that our data set is small, we can assume from the Normal QQ plot that our residuals are normally distributed
+Given that our data set is small, we can assume from the Normal QQ plot that our residuals are approximately normally distributed
 
 
 
