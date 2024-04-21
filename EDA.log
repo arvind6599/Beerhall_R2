@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.8)  19 APR 2024 14:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.8)  19 APR 2024 18:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -726,52 +726,40 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 
 {c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2023/
 texmf-dist/fonts/enc/dvips/base/8r.enc}]
-Overfull \hbox (22.65387pt too wide) in paragraph at lines 204--204
-[]\T1/pcr/m/n/12 ##     County           RegionName          RegionCode   Crimi
-nals_100k[] 
+Overfull \hbox (2.84367pt too wide) in paragraph at lines 205--206
+[]\T1/ptm/m/n/12 (-20) Region 
  []
 
 
-Overfull \hbox (15.45387pt too wide) in paragraph at lines 204--204
-[]\T1/pcr/m/n/12 ##  Length:40          Length:40          Min.   :1.00   Min. 
-  : 66.0[] 
+Overfull \hbox (7.88803pt too wide) in paragraph at lines 219--219
+[]|\T1/ptm/m/n/12 (-20) Length:40|  
  []
 
 
-Overfull \hbox (15.45387pt too wide) in paragraph at lines 204--204
-[]\T1/pcr/m/n/12 ##  Class :character   Class :character   1st Qu.:1.00   1st Q
-u.:127.0[] 
+Overfull \hbox (7.88803pt too wide) in paragraph at lines 219--219
+[]|\T1/ptm/m/n/12 (-20) Length:40|  
  []
 
 
-Overfull \hbox (15.45387pt too wide) in paragraph at lines 204--204
-[]\T1/pcr/m/n/12 ##  Mode  :character   Mode  :character   Median :3.00   Media
-n :157.5[] 
+Overfull \hbox (10.20905pt too wide) in paragraph at lines 221--221
+\T1/ptm/m/n/12 (-20) Qu.:1.00|  
  []
 
 
-Overfull \hbox (15.45387pt too wide) in paragraph at lines 204--204
-[]\T1/pcr/m/n/12 ##                                        Mean   :3.45   Mean 
-  :152.9[] 
+Overfull \hbox (4.97562pt too wide) in paragraph at lines 223--223
+[]|\T1/ptm/m/n/12 (-20) Median 
  []
 
 
-Overfull \hbox (15.45387pt too wide) in paragraph at lines 204--204
-[]\T1/pcr/m/n/12 ##                                        3rd Qu.:5.00   3rd Q
-u.:174.2[] 
- []
-
-
-Overfull \hbox (15.45387pt too wide) in paragraph at lines 204--204
-[]\T1/pcr/m/n/12 ##                                        Max.   :8.00   Max. 
-  :241.0[] 
+Overfull \hbox (10.20905pt too wide) in paragraph at lines 227--227
+\T1/ptm/m/n/12 (-20) Qu.:5.00|  
  []
 
 <EDA_files/figure-latex/unnamed-chunk-3-1.pdf, id=16, 355.3275pt x 240.9pt>
 File: EDA_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pdf)
 <use EDA_files/figure-latex/unnamed-chunk-3-1.pdf>
 Package pdftex.def Info: EDA_files/figure-latex/unnamed-chunk-3-1.pdf  used on 
-input line 217.
+input line 244.
 (pdftex.def)             Requested size: 355.33745pt x 240.90674pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -782,18 +770,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [2 <./EDA_files/figure-latex/unnamed-chunk-3-1.pdf>]
-<EDA_files/figure-latex/unnamed-chunk-4-1.pdf, id=29, 306.14375pt x 286.06876pt
+<EDA_files/figure-latex/unnamed-chunk-4-1.pdf, id=30, 306.14375pt x 286.06876pt
 >
 File: EDA_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 <use EDA_files/figure-latex/unnamed-chunk-4-1.pdf>
 Package pdftex.def Info: EDA_files/figure-latex/unnamed-chunk-4-1.pdf  used on 
-input line 232.
+input line 259.
 (pdftex.def)             Requested size: 306.14766pt x 286.07242pt.
-<EDA_files/figure-latex/unnamed-chunk-5-1.pdf, id=30, 351.3125pt x 242.9075pt>
+<EDA_files/figure-latex/unnamed-chunk-5-1.pdf, id=31, 351.3125pt x 242.9075pt>
 File: EDA_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type pdf)
 <use EDA_files/figure-latex/unnamed-chunk-5-1.pdf>
 Package pdftex.def Info: EDA_files/figure-latex/unnamed-chunk-5-1.pdf  used on 
-input line 243.
+input line 270.
 (pdftex.def)             Requested size: 351.31163pt x 242.90689pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -805,11 +793,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [3 <./EDA_files/figure-latex/unnamed-chunk-4-1.pdf>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 267.
+(Font)              <12> on input line 294.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 267.
+(Font)              <8> on input line 294.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 267.
+(Font)              <6> on input line 294.
 
 ! LaTeX Error: Unicode character β (U+03B2)
                not set up for use with LaTeX.
@@ -818,15 +806,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.273 Attendants @ public worship per 2000{]} β
+l.300 Attendants @ public worship per 2000{]} β
                                                 0, βij are the coefficients of
  
 Here is how much of TeX's memory you used:
- 15457 strings out of 474115
- 241318 string characters out of 5747697
+ 15462 strings out of 474115
+ 241357 string characters out of 5747697
  1951190 words of memory out of 5000000
- 37450 multiletter control sequences out of 15000+600000
- 601650 words of font info for 131 fonts, out of 8000000 for 9000
+ 37451 multiletter control sequences out of 15000+600000
+ 601780 words of font info for 133 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,12n,93p,1000b,631s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,11n,93p,1000b,631s stack positions out of 10000i,1000n,20000p,200000b,200000s
 !  ==> Fatal error occurred, no output PDF file produced!

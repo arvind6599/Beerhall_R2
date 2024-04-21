@@ -5,6 +5,7 @@ date: "`r format(Sys.Date(), '%d %B, %Y')`"
 output:
   html_document:
     df_print: paged
+    keep_md: true
   pdf_document:
     includes:
       in_header: header.tex
@@ -115,7 +116,7 @@ There appears to be a very clear linear dependence of criminal behaviour on bar 
 
 ## Model Fitting
 
-The model is fitted using polynomial regression. In order to predict Criminals per 100k population, we use a polynomial regression model which uses Ale/Beer Houses per 100k, Attendants \@ school per 10k, and Attendants \@ public worship per 2000 as the features. We include the variable Attendants \@ public worship per 2000 in our analysis even if it has no correlation with the variable Criminals per 100k as no correlation doesn't mean no causation, it only suggests that there is no linear association.
+We use least squres to minimize the sum of squared residuals in a polynomial regression. In order to predict Criminals per 100k population, we use a polynomial regression model which uses Ale/Beer Houses per 100k, Attendants \@ school per 10k, and Attendants \@ public worship per 2000 as the features. We include the variable Attendants \@ public worship per 2000 in our analysis even if it has no correlation with the variable Criminals per 100k as no correlation doesn't mean no causation, it only suggests that there is no linear association.
 
 Mathematically, the model can be represented as:
 
@@ -159,6 +160,7 @@ for (k in 1:6) {
   }
   L2O[k]<-(2*output/(40*39))**0.5
 }
+#modelF3<-lm(Criminals_100k ~ polym(BeerAle_100k, degree= 2)+polym( SchoolAttendance_10k,degree = 2) +polym (WorshipAttendance_2k, degree =  2), data=data)
 
 modelF1<- lm(Criminals_100k ~ polym(BeerAle_100k, degree= 4)+polym( SchoolAttendance_10k,degree = 4) +polym (WorshipAttendance_2k, degree =  4), data=data)
 
@@ -200,25 +202,57 @@ kable(merged_table, caption ="Information Criteria")
 ```{r}
 lr_test<-lrtest(modelF,modelF1)
 
+chisq<- lr_test$Chisq[2]
+pr<-lr_test$`Pr(>Chisq)`[2]
+
+lr_results<-data.frame(
+  Model=c("Degree 3 polynomial", "Degree 4 polynomial"),
+  Df=lr_test$`#Df`,
+  LogLik=lr_test$LogLik,
+  Chisq=c(" ", format(chisq, digits = 3)),
+  Pr_Chisq =c(" ", sprintf("%.2e",pr))
+)
+
+
+lr_results$Pr_Chisq <- format(lr_results$Pr_Chisq, scientific = TRUE, digits = 2)
+
+
+
 ```
 
-We can see that the two unrestricted models fit better the data than the simpler linear model. Using the likelihood ratio test, we compare them and with a p-value of `{r cat(lr_test$`Pr(>Chisq)`[2], "\n")}`we fail to reject the null hypothesis at a 5% significance level that the restricted linear model fits better the data and we keep the restricted model. Therefore, the polynomial model of degree 3 provides a significantly better fit to the data.
 
-Then, we run a stepwise selection to compare all possible models and pick the one that fits data the best 
+
+We can see that the two unrestricted models fit better the data than the simpler linear model. Using the likelihood ratio test, we compare them and we fail to reject the null hypothesis at a 5% significance level that the unrestricted linear model fits better the data and we keep the restricted model. Therefore, the polynomial model of degree 3 provides a significantly better fit to the data.
 
 ```{r}
-modelF2<- step(lm(Criminals_100k ~ BeerAle_100k+ SchoolAttendance_10k+ WorshipAttendance_2k+I(BeerAle_100k^2)+ I(SchoolAttendance_10k^2)+ I(WorshipAttendance_2k^2)+I(BeerAle_100k^3)+ I(SchoolAttendance_10k^3)+ I(WorshipAttendance_2k^3), data=data), trace=0)
+
+kable(lr_results, digits = 2, caption = "Likelihood Ratio Test results")
+```
+
+
+
+Then, we run a backward selection based on the Akaike Information Criteria to select a subset of variables from the larger set of variables used in the polynomial model of degree 3. We compare all possible sub-models and pick the one that fits best the data. 
+
+```{r}
+modelF2<- step(lm(Criminals_100k ~ BeerAle_100k+ SchoolAttendance_10k+ WorshipAttendance_2k+I(BeerAle_100k^2)+ I(SchoolAttendance_10k^2)+ I(WorshipAttendance_2k^2)+I(BeerAle_100k^3)+ I(SchoolAttendance_10k^3)+ I(WorshipAttendance_2k^3), data=data),direction="backward", trace=0)
+
+
 
 ```
 
 
 
+We get the following model :
+$\hat(y) = \beta_0 + \beta_{11}x_1 + \beta_{12}x_1^2 + \beta_{21}x_2 + \beta_{22}x_2^2 + \beta_{23}x_2^3 + \beta_{31}x_3 + \beta_{32}x_3^2 + \beta_{33}x_3^3$
 
-Here are the summary statistics of the model
+Where:
 
-  
+$\hat(y)$ is the predicted Criminals per 100k population x1, x2, x3 are Ale/Beer Houses per 100k, Attendants \@ school per 10k and Attendants \@ public worship per 2000 respectively. β0, βij are the estimates in the table below.
+¨
+ 
 ```{r}
-tab_model(modelF2)
+
+tab_model(modelF2,show.ci = FALSE, show.se = TRUE, show.stat = TRUE, show.zeroinf = TRUE, show.r2=TRUE, show.fstat=TRUE, show.aic=TRUE, show.dev = TRUE, show.loglik = TRUE, show.obs = TRUE, title="Summary statistics of the regression model", dv.labels = "Criminal per 100k", digits= 2, p.style = "numeric_stars")
 ```
   
   
@@ -228,7 +262,7 @@ tab_model(modelF2)
 
 In this section, we will verify the conditions for our regressions model to hold, namely that our residuals have zero mean, are uncorrelated, are homoscedastic and are normally distributed.
 
-##### Zero mean error terms
+#### Zero mean error terms
 
 ```{r}
 # Get residuals from the model
@@ -238,10 +272,10 @@ residuals <- residuals(modelF2)
 mean_error <- mean(residuals)
 
 ```
-We compute our model residuals mean and get : `{r print(mean_error)}`
+We compute our model residuals mean and get : `r print(mean_error)`
 
 
-##### Homoscedastic error term 
+#### Homoscedastic error term 
 
 ```{r}
 # Assuming modelF2 is your regression model
@@ -254,7 +288,7 @@ plot(modelF2, which = 1, main = " ", sub.caption=" ")
 We see from the plot above that our residuals are almost homoscedastic
 
 
-##### Error terms are uncorrelated 
+#### Error terms are uncorrelated 
 
 ```{r}
 #Autocorrelation function
@@ -264,10 +298,12 @@ acf(residuals(modelF2), main = "Series residuals")
 ```{r}
 # Perform Durbin-Watson test for autocorrelation
 dw<-dwtest(modelF2)
+dw
 ```
-Both the Autocorrelation function plot and the Durbin-Watson test (with autocorrelation ```{r} cat(dw$r},"\n)``` and p-value `{r cat(dw$p},"\n)}` ) suggest that we have a weak positive autocorrelation at lag 1.
+Both the Autocorrelation function plot and the Durbin-Watson test (with autocorrelation `{r} cat(dw$r,"\n")` and p-value `r cat(dw$p,"\n")` ) suggest that we have a weak positive autocorrelation at lag 1.
 
-##### Error terms are normally distributed
+
+#### Error terms are normally distributed
 
 
 
@@ -276,9 +312,18 @@ Both the Autocorrelation function plot and the Durbin-Watson test (with autocorr
 qqnorm(residuals(modelF2))
 qqline(residuals(modelF2))
 ```
-```
+
 
 Given that our data set is small, we can assume from the Normal QQ plot that our residuals are approximately normally distributed
+
+
+
+
+
+
+
+
+
 
 
 
