@@ -3,10 +3,8 @@ title: "Your Document Title"
 author: "Author Name"
 date: "`r format(Sys.Date(), '%d %B, %Y')`"
 output:
-  html_document:
-    df_print: paged
-    keep_md: true
   pdf_document:
+    latex_engine: xelatex
     includes:
       in_header: header.tex
 geometry: margin=0.87in
@@ -122,7 +120,7 @@ Mathematically, the model can be represented as:
 
 A polynomial regression model of degree n with three features (x1, x2, x3) can be represented as follows:
 
-$y = \beta_0 + \beta_{11}x_1 + \beta_{12}x_1^2 + ... + \beta_{1n}x_1^n + \beta_{21}x_2 + \beta_{22}x_2^2 + ... + \beta_{2n}x_2^n + \beta_{31}x_3 + \beta_{32}x_3^2 + ... + \beta_{3n}x_3^n + \epsilon$
+\[y = \beta_0 + \beta_{11}x_1 + \beta_{12}x_1^2 + ... + \beta_{1n}x_1^n + \beta_{21}x_2 + \beta_{22}x_2^2 + ... + \beta_{2n}x_2^n + \beta_{31}x_3 + \beta_{32}x_3^2 + ... + \beta_{3n}x_3^n + \epsilon\]
 
 Where:
 
