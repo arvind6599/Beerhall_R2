@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.4)  23 APR 2024 16:09
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.4)  25 APR 2024 16:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -439,13 +439,6 @@ Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 \f@nch@O@erf=\skip68
 \f@nch@O@olf=\skip69
 \f@nch@O@orf=\skip70
-) (/usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2021/02/14 v1.3d Input encoding file
-\inpenc@prehook=\toks28
-\inpenc@posthook=\toks29
-
-Package inputenc Warning: inputenc package ignored with utf8 based engines.
-
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip71
@@ -457,18 +450,18 @@ Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \WF@size=\dimen185
 \c@WF@wrappedlines=\count304
 \WF@box=\box63
-\WF@everypar=\toks30
+\WF@everypar=\toks28
 Package: wrapfig 2003/01/31  v 3.6
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count305
-\float@exts=\toks31
+\float@exts=\toks29
 \float@box=\box64
-\@float@everytoks=\toks32
+\@float@everytoks=\toks30
 \@floatcapt=\box65
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
-\everycr=\toks33
+\everycr=\toks31
 \minrowclearance=\skip73
 \rownum=\count306
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape.sty
@@ -507,8 +500,8 @@ Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \abovetabulinesep=\dimen194
 \belowtabulinesep=\dimen195
 \tabustrutrule=\dimen196
-\tabu@thebody=\toks34
-\tabu@footnotes=\toks35
+\tabu@thebody=\toks32
+\tabu@footnotes=\toks33
 \tabu@box=\box67
 \tabu@arstrutbox=\box68
 \tabu@hleads=\box69
@@ -532,7 +525,7 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \UL@box=\box72
 \UL@hyphenbox=\box73
 \UL@skip=\skip76
-\UL@hook=\toks36
+\UL@hook=\toks34
 \UL@height=\dimen197
 \UL@pe=\count314
 \UL@pixel=\dimen198
@@ -543,7 +536,7 @@ Package: ulem 2019/11/18
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen256
 \c@nlinenum=\count315
-\TeXr@lab=\toks37
+\TeXr@lab=\toks35
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
 (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -665,43 +658,43 @@ File: bkm-dvipdfm.def 2020-11-06 v1.29 bookmark driver for dvipdfm (HO)
 Package: xurl 2022/01/09 v 0.10 modify URL breaks
 )
 LaTeX Font Info:    Trying to load font information for TU+ptm on input line 11
-2.
-LaTeX Font Info:    No file TUptm.fd. on input line 112.
+3.
+LaTeX Font Info:    No file TUptm.fd. on input line 113.
 
 LaTeX Font Warning: Font shape `TU/ptm/m/n' undefined
-(Font)              using `TU/lmr/m/n' instead on input line 112.
+(Font)              using `TU/lmr/m/n' instead on input line 113.
 
 (./EDA.aux)
 \openout1 = `EDA.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/phv/m/n on input line 112.
+(Font)                  OT1/lmss/m/n --> TU/phv/m/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/phv/b/n on input line 112.
+(Font)                  OT1/lmss/bx/n --> TU/phv/b/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/pcr/m/n on input line 112.
+(Font)                  OT1/lmtt/m/n --> TU/pcr/m/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/pcr/b/n on input line 112.
+(Font)                  OT1/lmtt/m/n --> TU/pcr/b/n on input line 113.
 
 Package fontspec Info: latinmodern-math scale = 0.9999970497384594.
 
@@ -730,7 +723,7 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 112.
+(Font)              scaled to size 12.0pt on input line 113.
 
 Package fontspec Info: latinmodern-math scale = 0.9999970497384594.
 
@@ -769,18 +762,18 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 112.
+(Font)              scaled to size 12.0pt on input line 113.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 112.
+(Font)              `operators' in the math version `normal' on input line 113.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 112.
+ line 113.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 112.
+(Font)              `operators' in the math version `bold' on input line 113.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 112.
+t line 113.
 
 Package fontspec Info: latinmodern-math scale = 0.9999970497384594.
 
@@ -867,15 +860,15 @@ t=math;language=dflt;"
 (fontspec)             \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 112.
+(Font)              `symbols' in the math version `normal' on input line 113.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 112.
+t line 113.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 112.
+(Font)              `symbols' in the math version `bold' on input line 113.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 112.
+t line 113.
 
 Package fontspec Info: latinmodern-math scale = 0.9999970497384594.
 
@@ -945,22 +938,22 @@ pt=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 1
-12.
+13.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 112.
+t line 113.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 112
+(Font)              `largesymbols' in the math version `bold' on input line 113
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 112.
-LaTeX Info: Redefining \microtypecontext on input line 112.
-Package microtype Info: Applying patch `item' on input line 112.
-Package microtype Info: Applying patch `toc' on input line 112.
-Package microtype Info: Applying patch `eqnum' on input line 112.
-Package microtype Info: Applying patch `footnote' on input line 112.
-Package microtype Info: Applying patch `verbatim' on input line 112.
+t line 113.
+LaTeX Info: Redefining \microtypecontext on input line 113.
+Package microtype Info: Applying patch `item' on input line 113.
+Package microtype Info: Applying patch `toc' on input line 113.
+Package microtype Info: Applying patch `eqnum' on input line 113.
+Package microtype Info: Applying patch `footnote' on input line 113.
+Package microtype Info: Applying patch `verbatim' on input line 113.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -1007,38 +1000,38 @@ Package microtype Info: Loading generic protrusion settings for font family
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 112.
+Package hyperref Info: Link coloring OFF on input line 113.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 114.
+(Font)              scaled to size 14.4pt on input line 115.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 114.
+(Font)              scaled to size 10.0pt on input line 115.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 114.
+(Font)              scaled to size 7.0pt on input line 115.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-14.
+15.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 114.
+(Font)              scaled to size 14.4013pt on input line 115.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 114.
+(Font)              scaled to size 10.00092pt on input line 115.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 114.
+(Font)              scaled to size 7.00064pt on input line 115.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 114.
+(Font)              scaled to size 14.39845pt on input line 115.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 114.
+(Font)              scaled to size 9.99893pt on input line 115.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 114.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 114
+(Font)              scaled to size 6.99925pt on input line 115.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 115
 .
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 114
+LaTeX Font Info:    Trying to load font information for U+msb on input line 115
 .
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1047,41 +1040,56 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/m/n' instead on input line 116.
+(Font)              using `TU/ptm/m/n' instead on input line 117.
 
 
-Overfull \hbox (13.05577pt too wide) in paragraph at lines 163--164
+Overfull \hbox (13.05577pt too wide) in paragraph at lines 160--161
 []\TU/ptm/m/n/12 RegionName  
  []
 
 
-Overfull \hbox (17.7876pt too wide) in paragraph at lines 165--166
+Overfull \hbox (17.7876pt too wide) in paragraph at lines 162--163
  []\TU/ptm/m/n/12 RegionCode
  []
 
 
-Overfull \hbox (21.95595pt too wide) in paragraph at lines 167--168
+Overfull \hbox (21.95595pt too wide) in paragraph at lines 164--165
  []\TU/ptm/m/n/12 Criminals_100k
  []
 
 
-Overfull \hbox (20.89177pt too wide) in paragraph at lines 169--170
+Overfull \hbox (20.89177pt too wide) in paragraph at lines 166--167
  []\TU/ptm/m/n/12 BeerAle_100k
  []
 
 
-Overfull \hbox (34.4096pt too wide) in paragraph at lines 171--172
+Overfull \hbox (34.4096pt too wide) in paragraph at lines 168--169
  []\TU/ptm/m/n/12 SchoolAttendance_10k
  []
 
 
-Overfull \hbox (37.1216pt too wide) in paragraph at lines 173--174
+Overfull \hbox (37.1216pt too wide) in paragraph at lines 170--171
  []\TU/ptm/m/n/12 WorshipAttendance_2k
  []
 
 
-Overfull \hbox (11.54953pt too wide) in paragraph at lines 179--179
+Overfull \hbox (11.54953pt too wide) in paragraph at lines 176--176
 []|\TU/ptm/m/n/12 Middlesex|  
+ []
+
+
+Overfull \hbox (17.36377pt too wide) in paragraph at lines 176--176
+[]|\TU/ptm/m/n/12 SouthEastern|  
+ []
+
+
+Overfull \hbox (17.36377pt too wide) in paragraph at lines 177--177
+[]|\TU/ptm/m/n/12 SouthEastern|  
+ []
+
+
+Overfull \hbox (17.36377pt too wide) in paragraph at lines 178--178
+[]|\TU/ptm/m/n/12 SouthEastern|  
  []
 
 
@@ -1099,65 +1107,60 @@ Overfull \hbox (17.36377pt too wide) in paragraph at lines 181--181
 []|\TU/ptm/m/n/12 SouthEastern|  
  []
 
-
-Overfull \hbox (17.36377pt too wide) in paragraph at lines 182--182
-[]|\TU/ptm/m/n/12 SouthEastern|  
- []
-
-
-Overfull \hbox (17.36377pt too wide) in paragraph at lines 183--183
-[]|\TU/ptm/m/n/12 SouthEastern|  
- []
-
-
-Overfull \hbox (17.36377pt too wide) in paragraph at lines 184--184
-[]|\TU/ptm/m/n/12 SouthEastern|  
- []
-
-[1
-
-]
 LaTeX Font Info:    Trying to load font information for TU+pcr on input line 18
-7.
-LaTeX Font Info:    No file TUpcr.fd. on input line 187.
+4.
+LaTeX Font Info:    No file TUpcr.fd. on input line 184.
 
 LaTeX Font Warning: Font shape `TU/pcr/m/n' undefined
-(Font)              using `TU/lmr/m/n' instead on input line 187.
+(Font)              using `TU/lmr/m/n' instead on input line 184.
 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
 File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Mod
 ern Roman (RS)
 )
-Overfull \hbox (4.47318pt too wide) in paragraph at lines 207--208
-[]\TU/pcr/m/n/12 Region 
+Overfull \hbox (8.28413pt too wide) in paragraph at lines 202--203
+[]\TU/pcr/m/n/12 RegionName  
  []
 
 
-Overfull \hbox (10.63896pt too wide) in paragraph at lines 221--221
-[]|\TU/pcr/m/n/12 Length:40|  
+Overfull \hbox (18.4091pt too wide) in paragraph at lines 204--205
+[]\TU/pcr/m/n/12 RegionCode  
  []
 
 
-Overfull \hbox (10.63896pt too wide) in paragraph at lines 221--221
-[]|\TU/pcr/m/n/12 Length:40|  
+Overfull \hbox (31.85918pt too wide) in paragraph at lines 206--207
+[]\TU/pcr/m/n/12 Criminals_100k  
  []
 
 
-Overfull \hbox (12.15318pt too wide) in paragraph at lines 223--223
-\TU/pcr/m/n/12 Qu.:1.00|  
+Overfull \hbox (26.15106pt too wide) in paragraph at lines 208--209
+[]\TU/pcr/m/n/12 BeerAle_100k  
  []
 
 
-Overfull \hbox (7.23318pt too wide) in paragraph at lines 225--225
-[]|\TU/pcr/m/n/12 Median 
+Overfull \hbox (48.28316pt too wide) in paragraph at lines 210--211
+[]\TU/pcr/m/n/12 SchoolAttendance_10k  
  []
 
 
-Overfull \hbox (12.15318pt too wide) in paragraph at lines 229--229
-\TU/pcr/m/n/12 Qu.:5.00|  
+Overfull \hbox (50.99515pt too wide) in paragraph at lines 212--213
+[]\TU/pcr/m/n/12 WorshipAttendance_2k  
  []
 
+
+Overfull \hbox (2.17506pt too wide) in paragraph at lines 221--221
+\TU/pcr/m/n/12 Qu.:209.0|  
+ []
+
+
+Overfull \hbox (2.17506pt too wide) in paragraph at lines 226--226
+\TU/pcr/m/n/12 Qu.:490.8|  
+ []
+
+[1
+
+]
 File: EDA_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pdf)
 <use EDA_files/figure-latex/unnamed-chunk-3-1.pdf>
 
@@ -1171,6 +1174,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [2]
 File: EDA_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 <use EDA_files/figure-latex/unnamed-chunk-4-1.pdf>
+File: EDA_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type pdf)
+<use EDA_files/figure-latex/unnamed-chunk-5-1.pdf>
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1180,39 +1185,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [3]
-File: EDA_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type pdf)
-<use EDA_files/figure-latex/unnamed-chunk-5-1.pdf>
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.4pt on input line 296.
+(Font)              scaled to size 8.4pt on input line 293.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 296.
+(Font)              scaled to size 6.0pt on input line 293.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 296.
+(Font)              scaled to size 12.0011pt on input line 293.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.40076pt on input line 296.
+(Font)              scaled to size 8.40076pt on input line 293.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 296.
+(Font)              scaled to size 6.00055pt on input line 293.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 296.
+(Font)              scaled to size 11.99872pt on input line 293.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.3991pt on input line 296.
+(Font)              scaled to size 8.3991pt on input line 293.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 296.
-Missing character: There is no β (U+03B2) in font [lmroman12-regular]:mapping=t
-ex-text;!
-Missing character: There is no β (U+03B2) in font [lmroman12-regular]:mapping=t
-ex-text;!
-Missing character: There is no ε (U+03B5) in font [lmroman12-regular]:mapping=t
-ex-text;!
+(Font)              scaled to size 5.99936pt on input line 293.
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+Underfull \hbox (badness 1546) in paragraph at lines 295--301
+[]\TU/pcr/m/n/12 Where $[]$ is the predicted Criminals_100k population, and $[]
+[]$, $[][]$, and $[][]$ represent
+ []
 
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[4]
 File: EDA_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type pdf)
 <use EDA_files/figure-latex/unnamed-chunk-7-1.pdf>
 
@@ -1223,11 +1217,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[4]
+Underfull \hbox (badness 1546) in paragraph at lines 361--366
+[]\TU/pcr/m/n/12 Where $[]$ is the predicted Criminals_100k population, and $[]
+[]$, $[][]$, and $[][]$ represent
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
 [5]
-Missing character: There is no β (U+03B2) in font [lmroman12-regular]:mapping=t
-ex-text;!
-Missing character: There is no β (U+03B2) in font [lmroman12-regular]:mapping=t
-ex-text;!
+File: EDA_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (type pdf)
+<use EDA_files/figure-latex/unnamed-chunk-13-1.pdf>
+File: EDA_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file (type pdf)
+<use EDA_files/figure-latex/unnamed-chunk-14-1.pdf>
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1237,6 +1245,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [6]
+File: EDA_files/figure-latex/unnamed-chunk-16-1.pdf Graphic file (type pdf)
+<use EDA_files/figure-latex/unnamed-chunk-16-1.pdf>
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1245,66 +1255,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[7]
-File: EDA_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file (type pdf)
-<use EDA_files/figure-latex/unnamed-chunk-14-1.pdf>
-
-Overfull \hbox (89.80028pt too wide) in paragraph at lines 525--526
- []\TU/ptm/b/n/12 Homoscedastic error term[] [] 
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[8]
-File: EDA_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (type pdf)
-<use EDA_files/figure-latex/unnamed-chunk-15-1.pdf>
-
-Overfull \hbox (103.94028pt too wide) in paragraph at lines 533--534
- []\TU/ptm/b/n/12 Error terms are uncorrelated[] [] 
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[9]
-File: EDA_files/figure-latex/unnamed-chunk-17-1.pdf Graphic file (type pdf)
-<use EDA_files/figure-latex/unnamed-chunk-17-1.pdf>
-
-Overfull \hbox (144.15628pt too wide) in paragraph at lines 552--553
- []\TU/ptm/b/n/12 Error terms are normally distributed[] [] 
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[10] (./EDA.aux)
+[7] (./EDA.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 20949 strings out of 476683
- 386621 string characters out of 5804048
- 1871018 words of memory out of 5000000
- 40853 multiletter control sequences out of 15000+600000
+ 20932 strings out of 476683
+ 386288 string characters out of 5804048
+ 1877018 words of memory out of 5000000
+ 40839 multiletter control sequences out of 15000+600000
  518862 words of font info for 89 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 86i,12n,122p,1000b,520s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 86i,11n,122p,1000b,516s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on EDA.pdf (10 pages).
+Output written on EDA.pdf (7 pages).
