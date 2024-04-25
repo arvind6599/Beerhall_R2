@@ -16,6 +16,7 @@ header-includes:
 - \fancyhf{}
 - \rhead{Arvind Menon, Lennart Platon Kutzschebauch, Nisrine Bachar, Jayati Sood}
 - \cfoot{\thepage}
+bibliography: ref.bib
 ---
 
 ```{r setup, include=FALSE, message=FALSE, warning=FALSE}
@@ -43,8 +44,8 @@ conflict_prefer("lag", "dplyr")
 # Introduction
 
 We as human beings categorize actions as moral and immoral, and label serious moral transgressions such as murder, theft and fraud as crimes. To prevent crime, we impose punishments as deterrents, though other methods to reduce crime may exist. Moreover, crime rates vary by region, prompting the question: what makes a crime more likely to happen in a region?\
-Clay[1857], concentrating on crime in England, analysed the following characteristics: Beer-(ale)-house numbers, worship attendance and public school attendance. The argument he provides for the latter two, is both allow for the public access to Christian moral values. It is to note, the "public schools" mentioned by Clay concentrated mostly on teaching read and writing and were not free but accepted anyone who could afford it. In the case of beer-houses, he argues "the temptation to animal pleasure" corrupts a person. To help his case he tries to show the positive correlation of beer-houses, the negative correlations of public school and worship attendance to crime.\
-In this paper we want to investigate these effects of the aforementioned characteristics and try to predict crime rate from them using the same data set. However, before starting it is important to mention, as noticed by Clay[1857], the recorded crime rate may be inaccurate because of systematic reasons since each county handles crime and punishment differently on the executive and juridical levels. This will impact the accuracy of all possible analysis and models.
+@Clay, concentrating on crime in England, analysed the following characteristics: Beer-(ale)-house numbers, worship attendance and public school attendance. The argument he provides for the latter two, is both allow for the public access to Christian moral values. It is to note, the "public schools" mentioned by @Clay concentrated mostly on teaching read and writing and were not free but accepted anyone who could afford it. In the case of beer-houses, he argues "the temptation to animal pleasure" corrupts a person. To help his case he tries to show the positive correlation of beer-houses, the negative correlations of public school and worship attendance to crime.\
+In this paper we want to investigate these effects of the aforementioned characteristics and try to predict crime rate from them using the same data set. However, before starting it is important to mention, as noticed by @Clay, the recorded crime rate may be inaccurate because of systematic reasons since each county handles crime and punishment differently on the executive and juridical levels. This will impact the accuracy of all possible analysis and models.
 
 # Exploratory Data Analysis
 
@@ -306,6 +307,8 @@ qqline(residuals(modelF2))
 
 
 Given that our data set is small, we can assume from the Normal QQ plot that our residuals are approximately normally distributed
+
+# References
 
 
 
