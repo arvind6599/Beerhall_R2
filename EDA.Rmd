@@ -275,10 +275,11 @@ plot(modelF2, which = 1, main = " ", sub.caption=" ")
 
 
 
-We see from the plot above that our residuals are almost homoscedastic
+We see from the plot above that our residuals are almost homoscedastic.
 
 
-#### Error terms are uncorrelated 
+#### Checking if Error Terms are Uncorrelated 
+
 
 ```{r fig.width=5, fig.height=3.5, fig.align='center', message=FALSE, warning=FALSE}
 #Autocorrelation function
