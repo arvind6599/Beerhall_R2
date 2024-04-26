@@ -290,9 +290,9 @@ acf(residuals(modelF2), main = "Series residuals")
 ```{r}
 # Perform Durbin-Watson test for autocorrelation
 dw<-dwtest(modelF2)
-dw
+
 ```
-Both the Autocorrelation function plot and the Durbin-Watson test (with autocorrelation `r (cat(dw$r,"\n"))` and p-value `r (cat(dw$p,"\n"))` ) suggest that we have a weak positive autocorrelation at lag 1.
+Both the Autocorrelation function plot and the Durbin-Watson test (with autocorrelation `r (cat(dw$r,"\n"))` and p-value `r (cat(dw$p,"\n"))` ) suggest that we have a weak positive autocorrelation at lag 1. It may be due to an omitted variable bias, as it is specified in our reference paper that criminality and especially sentences depend of the region if it is crowded or not and therefore the law is strictly applied or not.
 
 
 #### Error terms are normally distributed
