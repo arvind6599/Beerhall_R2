@@ -115,17 +115,14 @@ There appears to be a very clear linear dependence of criminal behaviour on bar 
 
 ## Model Fitting
 
-We use least squres to minimize the sum of squared residuals in a polynomial regression. In order to predict `Criminals_100k`, we use a polynomial regression model which uses `BeerAle_100k`, `SchoolAttendance_10k`, and `WorshipAttendance_2k` as the features. We include the variable `WorshipAttendance_2k` in our analysis even if it has no correlation with the variable Criminals per 100k as no correlation doesn't mean no causation, it only suggests that there is no linear association.
+We use least squres to minimize the sum of squared residuals in a polynomial regression. In order to predict `Criminals_100k`, we use a polynomial regression model which uses `BeerAle_100k`, `SchoolAttendance_10k`, and `WorshipAttendance_2k` as the features. We include the variable `WorshipAttendance_2k` in our analysis even though it has no correlation with the variable `Criminals_100k` in order to capture any non-linear association.
 
-Mathematically, the model can be represented as:
-
-A polynomial regression model of degree n with three features (x1, x2, x3) can be represented as follows:
-
+A polynomial regression model of degree $n$ with three features $(x_1, x_2, x_3)$ can be represented as follows:
 \[y = \beta_0 + \beta_{11}x_1 + \beta_{12}x_1^2 + ... + \beta_{1n}x_1^n + \beta_{21}x_2 + \beta_{22}x_2^2 + ... + \beta_{2n}x_2^n + \beta_{31}x_3 + \beta_{32}x_3^2 + ... + \beta_{3n}x_3^n + \epsilon\]
 
-Where $\hat{y}$ is the predicted `Criminals_100k` population, and $x_1$, $x_2$, and $x_3$ represent `BeerAle_100k`, `SchoolAttendance_10k` and `WorshipAttendance_2k` respectively. $\beta_0$, $\beta_{ij}$ are the coefficients of the model where $i$ is the feature index and $j$ is the degree of the polynomial $\epsilon$ is the error term
+Where $\hat{y}$ is the predicted `Criminals_100k` population, and $x_1$, $x_2$, and $x_3$ represent `BeerAle_100k`, `SchoolAttendance_10k` and `WorshipAttendance_2k` respectively. $\beta_0$, $\beta_{ij}$ are the coefficients of the model where $i$ is the feature index and $j$ is the degree of the polynomial $\epsilon$ is the error term.
 
-We choose the model based on the exploratory data analysis and the correlation between the features and the target variable. On top of the linear relation, we also add polynomial terms to capture the non-linear relation between the features and the target variable. We cross validate to find the optimum polynomial degree among polynomials of degrees up to 6, using leave-one-out cross validation. The minimum cross validation errors corresponds to polynomials with degree 3 and 4.
+We choose the model based on the exploratory data analysis and the correlation between the features and the target variable. We add polynomial terms to capture the non-linear relation between the features and the target variable. We use leave-one-out cross validation to find the optimum polynomial degree among polynomials of degrees up to 6. The minimum cross validation errors corresponds to polynomials with degree 3 and 4.
 
 ```{r}
 
@@ -299,7 +296,7 @@ Both the Autocorrelation function plot and the Durbin-Watson test (with autocorr
 
 
 
-```{r fig.width=5, fig.height=3.5, fig.align='center', message=FALSE, warning=FALSE}
+```{r fig.width=4.5, fig.height=3.5, fig.align='center', message=FALSE, warning=FALSE}
 # Q-Q plot of residuals
 qqnorm(residuals(modelF2))
 qqline(residuals(modelF2))
@@ -311,9 +308,9 @@ Given that our data set is small, we can assume from the Normal QQ plot that our
 
 ## Conclusion
 
-Our analysis begins with exploratory data analysis, and it made some key observations. "Criminals per 100k" had a positive correlation(=0.46) with "Ale/Beer houses per 100k", a negative correlation(=0.23) with "Attendants at school per 10k", and a very insignificant correlation with Attendants at public worship per 2k. This is further illustrated in the regression plots and confidence intervals clearly highlighting trends between the significantly correlated features and the target variable. To investigate non-linear relations, we choose a polynomial regression model and compare it with the performance of a linear regression model. The degree of the polynomial regression model is selected using leave-one-out and leave-two-out cross-validation methods. It is found that models with degrees 3,4 both have a lower AIC than the linear regression model thus indicating a higher quality fit, finally choosing the degree 3 polynomial model using the likelihood ratio test.
+Our analysis begins with exploratory data analysis, and it made some key observations. "Criminals per 100k" had a positive correlation(=0.46) with "Ale/Beer houses per 100k", a negative correlation(=0.23) with "Attendants at school per 10k", and a very insignificant correlation with "Attendants at public worship per 2k". To investigate non-linear relations, we choose a polynomial regression model and compared its performance with that of a linear regression model. We used leave-one-out cross validation to select polynomials of degrees 3 and 4 for our polynomial regression model. Models with degrees 3,4 both have a lower AIC than the linear regression model indicating a better fit, of which we finally chose a degree 3 model, based on the results from the likelihood ratio test.
 
-The fitted model has positive coefficients for "Ale/Beer houses per 100k" features, negative coefficients for "Attendants at school per 10k" features, and opposite sign coefficients for "Attendants at public worship per 2k", which mainly indicates that the features cancel each other out and end up being less significant. These results align with our initial analysis and partially agree with the claims made in the study, with the difference in the significance of "Attendants at public worship", which is found to be insignificant. On analysing the residual errors, we find that they are normally distributed (using the Q-Q plots) and almost homoscedastic (from the residual vs fitted values plot). The error terms are uncorrelated with a weak positive autocorrelation at lag 1. Thus the model adheres to the assumptions made during model selection.
+The fitted model has positive coefficients for "Ale/Beer houses per 100k" features, negative coefficients for "Attendants at school per 10k" features, and opposite sign coefficients for "Attendants at public worship per 2k", which indicates that the features cancel each other out and end up being less significant. These results align with our initial analysis and partially agree with the claims made in the study, with the difference in the significance of "Attendants at public worship", which is found to be insignificant. On analysing the residual errors, we find that they are normally distributed (using the Q-Q plots) and almost homoscedastic (from the residual vs fitted values plot). The error terms are uncorrelated with a weak positive autocorrelation at lag 1. Thus the model adheres to the assumptions made during model selection.
 
 In summary, the model agrees with the study that the crime rate in a county is positively associated with the density of ale/beer houses in that county, and negatively associated with the density of attendants at schools in that county, and disagrees with the fact that the density of attendants at places of public worship in that county has a significant influence on the crime rate in that county.
 
