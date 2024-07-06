@@ -296,7 +296,7 @@ Both the Autocorrelation function plot and the Durbin-Watson test (with autocorr
 
 
 
-```{r fig.width=4.5, fig.height=3.5, fig.align='center', message=FALSE, warning=FALSE}
+```{r fig.width=4.5, fig.height=4.5, fig.align='center', message=FALSE, warning=FALSE}
 # Q-Q plot of residuals
 qqnorm(residuals(modelF2))
 qqline(residuals(modelF2))
