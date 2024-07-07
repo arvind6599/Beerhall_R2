@@ -74,9 +74,9 @@ writeLines("\n")
 
 ```
 
-The dataset contains information about 40 different counties.`County` and `RegionName` are categorical variables, and each of the 8 regions is assigned a `RegionCode`, which is a number from 1 to 8. `Criminals_100k` is the number of criminals per 100,000 inhabitants for any particular county. Similarly, `BeerAle_100k`, `SchoolAttendance_10k` and `WorshipAttendance_2k` are social indicators measured numerically as a proportion of the population. In order to better visualise the numerical data, we plot histograms of each numerical variable, with the exception of the categorical `RegionCode`.
+The dataset contains information about 40 different counties.`County` and `RegionName` are categorical variables, and each of the 8 regions is assigned a `RegionCode`, which is a number from 1 to 8. `Criminals_100k` is the number of criminals per 100,000 inhabitants for any particular county. Similarly, `BeerAle_100k`, `SchoolAttendance_10k` and `WorshipAttendance_2k` are social indicators measured numerically as a proportion of the population. In order to better visualize the numerical data, we plot histograms of each numerical variable, with the exception of the categorical `RegionCode`.
 
-```{r, fig.width=5, fig.height=3.5, fig.align='center'}
+```{r, fig.width=5, fig.height=3.5, fig.align='center', fig.cap="Histograms of numerical variables"}
 # plot variable-wise histograms
 numeric_data <- data[, sapply(data, is.numeric)]
 data %>% pivot_longer(cols = c( Criminals_100k, BeerAle_100k,SchoolAttendance_10k, WorshipAttendance_2k)) %>%
@@ -86,18 +86,18 @@ data %>% pivot_longer(cols = c( Criminals_100k, BeerAle_100k,SchoolAttendance_10
 
 The `BeerAle_100k` variable appears to be bimodal. The histogram suggests that there are two common levels of alcohol consumption within the entire population, one around the 200, and another around 400 per 100,000 population. According to the data summary, `Crimanals_100k` has a mean of 152.9 and a median of 157.5, suggesting the symmetry that is also reflected in the histogram. `SchoolAttendance_10k` is slightly left skewed, while `WorshipAttendance_2k` has a varied but loosely symmetric distribution.
 
-The linear dependence between each pair of numeric variables is expressed in the following correlation matrix:
+The linear dependence between each pair of numerical variables is expressed in the following correlation matrix:
 
-```{r, fig.width=6, fig.height=4, fig.align='center'}
+```{r, fig.width=6, fig.height=4, fig.align='center', fig.cap="Correlation matrix"}
 # analyse correlation between variables
 par(mfrow = c(1, 1))
 M <- cor(numeric_data)
 corrplot(cor(numeric_data), method = "number")
 ```
 
-There appears to be negligible linear dependence between worship attendance and criminality. School attendance is slightly negatively correlated with the prevalence of crime. Criminal behaviour is positively correlated with `BeerAle_100k` with a correlation coefficient of 0.46, suggesting that counties with a more dominant culture of frequenting bars and pubs are also where more crime happens. In order to better visualise these dependencies, we regress `Criminals_100k` on each of these variables.
+There appears to be negligible linear dependence between worship attendance and criminality. School attendance is slightly negatively correlated with the prevalence of crime. Criminal behavior is positively correlated with `BeerAle_100k` with a correlation coefficient of 0.46, suggesting that counties with a more dominant culture of frequenting bars and pubs are also where more crime happens. In order to better visualize these dependencies, we regress `Criminals_100k` on each of these variables.
 
-```{r, fig.width=5, fig.height=3.5, fig.align='center', message=FALSE, warning=FALSE}
+```{r, fig.width=5, fig.height=3.5, fig.align='center',fig.cap="Regression plots of Criminals_100k on the other variables", message=FALSE, warning=FALSE}
 # regression plots
 fig1 <- ggplot(data, aes(BeerAle_100k, Criminals_100k)) + geom_point() +
   stat_smooth(method = "lm")
@@ -111,11 +111,11 @@ fig4 <- ggplot(data, aes(WorshipAttendance_2k, Criminals_100k)) + geom_point() +
 ggarrange(fig1, fig2, fig3, fig4)
 ```
 
-There appears to be a very clear linear dependence of criminal behaviour on bar attendance, with most datapoints falling within the 95% confidence interval of the regression line. There is high variation of criminality across school attendance and worship attendance.
+There appears to be a very clear linear dependence of criminal behaviour on bar attendance, with most data points falling within the 95% confidence interval of the regression line. There is high variation of criminality across school attendance and worship attendance.
 
 ## Model Fitting
 
-We use least squres to minimize the sum of squared residuals in a polynomial regression. In order to predict `Criminals_100k`, we use a polynomial regression model which uses `BeerAle_100k`, `SchoolAttendance_10k`, and `WorshipAttendance_2k` as the features. We include the variable `WorshipAttendance_2k` in our analysis even though it has no correlation with the variable `Criminals_100k` in order to capture any non-linear association.
+We use least squares to minimize the sum of squared residuals in a polynomial regression. In order to predict `Criminals_100k`, we use a polynomial regression model which uses `BeerAle_100k`, `SchoolAttendance_10k`, and `WorshipAttendance_2k` as the features. We include the variable `WorshipAttendance_2k` in our analysis even though it has no correlation with the variable `Criminals_100k` in order to capture any non-linear association.
 
 A polynomial regression model of degree $n$ with three features $(x_1, x_2, x_3)$ can be represented as follows:
 \[y = \beta_0 + \beta_{11}x_1 + \beta_{12}x_1^2 + ... + \beta_{1n}x_1^n + \beta_{21}x_2 + \beta_{22}x_2^2 + ... + \beta_{2n}x_2^n + \beta_{31}x_3 + \beta_{32}x_3^2 + ... + \beta_{3n}x_3^n + \epsilon\]
@@ -163,10 +163,10 @@ modelF<- lm(Criminals_100k ~ polym(BeerAle_100k, degree= 3)+polym( SchoolAttenda
 ```
 
 
-```{r fig.width=5, fig.height=3.5, fig.align='center', message=FALSE, warning=FALSE}
+```{r fig.width=5, fig.height=3.5, fig.align='center',fig.cap="Cross validation errors", message=FALSE, warning=FALSE}
 # Create a first line
 plot(1:6, L1O[1:6], type = "b", frame = FALSE, pch = 19, 
-     col = "red", xlab = "Degrees", ylab = "Error", ylim = c(35, 100), main = "Cross validation errors per polynomial degree")
+     col = "red", xlab = "Degrees", ylab = "Error", main = "Cross validation errors per polynomial degree")
 
 # Add a legend to the plot
 legend("topleft", legend=c("L1O"),
@@ -174,10 +174,10 @@ legend("topleft", legend=c("L1O"),
 
 
 ```
-Note that the regression estimates suggest that most coefficients for polynomial terms are near 0, suggesting that these terms do not contribute significantly to the model. We further compare polynomial regression models of degrees 3 and 4 with the linear model using the Akaike Information Criterion (AIC) and the Bayesian Information Criterion. These are both measures to compare different models in order to determine which fits the data best, while penalising the complexity of the model. They are calculated based on the number of parameters in the model and the likelihod of the model. The respective mathematical formulations are as follows:
+Note that the regression estimates suggest that most coefficients for polynomial terms are near 0, suggesting that these terms do not contribute significantly to the model. We further compare polynomial regression models of degrees 3 and 4 with the linear model using the Akaike Information Criterion (AIC) and the Bayesian Information Criterion. These are both measures to compare different models in order to determine which fits the data best, while penalizing the complexity of the model. They are calculated based on the number of parameters in the model and the likelihood of the model. The respective mathematical formulations are as follows:
 \[\text{AIC} = 2k-2\text{ln}(L)\\
 \text{BIC} = k\text{ln}(n)-2\text{ln}(L)\]
-where in both cases, $k$ is the number of parameters and $L$ is the maximum likelihood of the model. $n$ is the number of observations. As we can see, BIC penalises the number of parameters more strictly, and in proportion to the number of observations. It thus yields sparser models with fewer predictors.
+where in both cases, $k$ is the number of parameters and $L$ is the maximum likelihood of the model. $n$ is the number of observations. As we can see, BIC penalizes the number of parameters more strictly, and in proportion to the number of observations. It thus yields sparser models with fewer predictors.
 
 ```{r}
 aic<-AIC(model, modelF, modelF1)
@@ -194,28 +194,28 @@ kable(merged_table, caption ="Information Criteria")
 ```
 
 ```{r}
-lr_test<-lrtest(modelF,modelF1)
+#lr_test<-lrtest(modelF,modelF1)
 
-chisq<- lr_test$Chisq[2]
-pr<-lr_test$`Pr(>Chisq)`[2]
+#chisq<- lr_test$Chisq[2]
+#pr<-lr_test$`Pr(>Chisq)`[2]
 
-lr_results<-data.frame(
-  Model=c("Degree 3 polynomial", "Degree 4 polynomial"),
-  Df=lr_test$`#Df`,
-  LogLik=lr_test$LogLik,
-  Chisq=c(" ", format(chisq, digits = 3)),
-  Pr_Chisq =c(" ", sprintf("%.2e",pr))
-)
+#lr_results<-data.frame(
+#  Model=c("Degree 3 polynomial", "Degree 4 polynomial"),
+#  Df=lr_test$`#Df`,
+ # LogLik=lr_test$LogLik,
+ # Chisq=c(" ", format(chisq, digits = 3)),
+ # Pr_Chisq =c(" ", sprintf("%.2e",pr))
+#)
 
 
-lr_results$Pr_Chisq <- format(lr_results$Pr_Chisq, scientific = TRUE, digits = 2)
+#lr_results$Pr_Chisq <- format(lr_results$Pr_Chisq, scientific = TRUE, digits = 2)
 
 
 
 ```
 
 
-According to AIC, the higher degree polynomial models fit better the data than the simpler linear model, but by a small margin. The BIC of the linear model is the lowest, indicating that a slightly stricter penalty on the number of parameters (ln$(40)$~$3.69$) yeilds the linear model as the better model. Given the test results and the regression estimates, we favour parsimony of predictors, and choose the linear model for further analysis.
+According to AIC, the higher degree polynomial models fit better the data than the simpler linear model, but by a small margin. The BIC of the linear model is the lowest, indicating that a slightly stricter penalty on the number of parameters (ln$(40)$~$3.69$) yields the linear model as the better model. Given the test results and the regression estimates, we favour parsimony of predictors, and choose the linear model for further analysis.
 
 ```{r}
 
@@ -232,13 +232,13 @@ According to AIC, the higher degree polynomial models fit better the data than t
 
 
 We get the following model:
-$\hat{y} = \beta_0 + \beta_{11}x_1 + \beta_{12}x_1^2 + \beta_{21}x_2 + \beta_{22}x_2^2 + \beta_{23}x_2^3 + \beta_{31}x_3 + \beta_{32}x_3^2 + \beta_{33}x_3^3$
+$\hat{y} = \beta_0 + \beta_{1}x_1 + \beta_{2}x_2 + \beta_{3}x_3 $
 
 Where $\hat{y}$ is the predicted `Criminals_100k` population, and $x_1$, $x_2$, and $x_3$ represent `BeerAle_100k`, `SchoolAttendance_10k` and `WorshipAttendance_2k` respectively. The regression coefficients $\beta_0$ and $\beta_{ij}$ are estimated in Table 5.
 ¨
  
 ```{r model-summary, results='asis'}
-summary_stats <- summary(modelF2)
+summary_stats <- summary(model)
 kable(summary_stats$coefficients, caption = "Regression Model Summary", format = "latex", booktabs = TRUE, 
       col.names = c("Estimate", "Std. Error", "t value", "Pr(>|t|)"), digits = 3)
 ```
@@ -253,7 +253,7 @@ In this section, we will verify the conditions for our regressions model to hold
 
 ```{r}
 # Get residuals from the model
-residuals <- residuals(modelF2)
+residuals <- residuals(model)
 
 # Compute the mean of the residuals
 mean_error <- mean(residuals)
@@ -265,9 +265,9 @@ We compute our model residuals mean and get : `r (print(mean_error))`
 
 #### Homoscedastic error term 
 
-```{r fig.width=5, fig.height=3.5, fig.align='center', message=FALSE, warning=FALSE}
+```{r fig.width=5, fig.height=3.5, fig.align='center',fig.cap="Residuals vs fitted values plot", message=FALSE, warning=FALSE}
 # Assuming modelF2 is your regression model
-plot(modelF2, which = 1, main = " ", sub.caption=" ")
+plot(model, which = 1, main = " ", sub.caption=" ")
 
 ```
 
@@ -279,14 +279,15 @@ We see from the plot above that our residuals are almost homoscedastic.
 #### Checking if Error Terms are Uncorrelated 
 
 
-```{r fig.width=5, fig.height=3.5, fig.align='center', message=FALSE, warning=FALSE}
+```{r fig.width=5, fig.height=3.5, fig.align='center',fig.cap="Residuals Autocorrelation function", message=FALSE, warning=FALSE}
 #Autocorrelation function
-acf(residuals(modelF2), main = "Series residuals")
+acf(residuals(model), main = "Series residuals")
 ```
 
 ```{r}
 # Perform Durbin-Watson test for autocorrelation
-dw<-dwtest(modelF2)
+dw<-dwtest(model)
+
 
 ```
 Both the Autocorrelation function plot and the Durbin-Watson test (with autocorrelation `r (cat(dw$r,"\n"))` and p-value `r (cat(dw$p,"\n"))` ) suggest that we have a weak positive autocorrelation at lag 1. It may be due to an omitted variable bias, as it is specified in our reference paper that criminality and especially sentences depend of the region if it is crowded or not and therefore the law is strictly applied or not.
@@ -296,10 +297,10 @@ Both the Autocorrelation function plot and the Durbin-Watson test (with autocorr
 
 
 
-```{r fig.width=4.5, fig.height=4.5, fig.align='center', message=FALSE, warning=FALSE}
+```{r fig.width=4.5, fig.height=4.5, fig.align='center',fig.cap="Q-Q plot", message=FALSE, warning=FALSE}
 # Q-Q plot of residuals
-qqnorm(residuals(modelF2))
-qqline(residuals(modelF2))
+qqnorm(residuals(model))
+qqline(residuals(model))
 ```
 
 
