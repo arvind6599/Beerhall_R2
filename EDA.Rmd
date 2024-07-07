@@ -120,9 +120,9 @@ We use least squres to minimize the sum of squared residuals in a polynomial reg
 A polynomial regression model of degree $n$ with three features $(x_1, x_2, x_3)$ can be represented as follows:
 \[y = \beta_0 + \beta_{11}x_1 + \beta_{12}x_1^2 + ... + \beta_{1n}x_1^n + \beta_{21}x_2 + \beta_{22}x_2^2 + ... + \beta_{2n}x_2^n + \beta_{31}x_3 + \beta_{32}x_3^2 + ... + \beta_{3n}x_3^n + \epsilon\]
 
-Where $\hat{y}$ is the predicted `Criminals_100k` population, and $x_1$, $x_2$, and $x_3$ represent `BeerAle_100k`, `SchoolAttendance_10k` and `WorshipAttendance_2k` respectively. $\beta_0$, $\beta_{ij}$ are the coefficients of the model where $i$ is the feature index and $j$ is the degree of the polynomial $\epsilon$ is the error term.
+Where $y$ is the predicted `Criminals_100k` population, and $x_1$, $x_2$, and $x_3$ represent `BeerAle_100k`, `SchoolAttendance_10k` and `WorshipAttendance_2k` respectively. $\beta_0$, $\beta_{ij}$ are the coefficients of the model where $i$ is the feature index and $j$ is the degree of the polynomial $\epsilon$ is the error term.
 
-We choose the model based on the exploratory data analysis and the correlation between the features and the target variable. We add polynomial terms to capture the non-linear relation between the features and the target variable. We use leave-one-out cross validation to find the optimum polynomial degree among polynomials of degrees up to 6. The minimum cross validation errors corresponds to polynomials with degree 3 and 4.
+We choose the model based on the exploratory data analysis and the correlation between the features and the target variable. Polynomial terms are included to capture any non-linear relationships between the features and the target variable. We use leave-one-out cross validation to find the optimum polynomial degree among polynomials of degrees up to 6. The minimum cross validation errors corresponds to polynomials with degrees 1, 3 and 4.
 
 ```{r}
 
@@ -174,7 +174,10 @@ legend("topleft", legend=c("L1O"),
 
 
 ```
-We further compare polynomial regression models of degrees 3 and 4 with the linear model using the Information Criteria.
+Note that the regression estimates suggest that most coefficients for polynomial terms are near 0, suggesting that these terms do not contribute significantly to the model. We further compare polynomial regression models of degrees 3 and 4 with the linear model using the Akaike Information Criterion (AIC) and the Bayesian Information Criterion. These are both measures to compare different models in order to determine which fits the data best, while penalising the complexity of the model. They are calculated based on the number of parameters in the model and the likelihod of the model. The respective mathematical formulations are as follows:
+\[\text{AIC} = 2k-2\text{ln}(L)\\
+\text{BIC} = k\text{ln}(n)-2\text{ln}(L)\]
+where in both cases, $k$ is the number of parameters and $L$ is the maximum likelihood of the model. $n$ is the number of observations. As we can see, BIC penalises the number of parameters more strictly, and in proportion to the number of observations. It thus yields sparser models with fewer predictors.
 
 ```{r}
 aic<-AIC(model, modelF, modelF1)
@@ -212,18 +215,15 @@ lr_results$Pr_Chisq <- format(lr_results$Pr_Chisq, scientific = TRUE, digits = 2
 ```
 
 
-The higher degree polynomial models fit better the data than the simpler linear model. Comparing the two models using the likelihood ratio test, we find that the restricted (degree 3) model cannot be rejected at the 5% significance level. 
+According to AIC, the higher degree polynomial models fit better the data than the simpler linear model, but by a small margin. The BIC of the linear model is the lowest, indicating that a slightly stricter penalty on the number of parameters (ln$(40)$~$3.69$) yeilds the linear model as the better model. Given the test results and the regression estimates, we favour parsimony of predictors, and choose the linear model for further analysis.
 
 ```{r}
 
-kable(lr_results, digits = 2, caption = "Likelihood Ratio Test results")
+#kable(lr_results, digits = 2, caption = "Likelihood Ratio Test results")
 ```
 
-
-Then, we use backward selection based on the Akaike Information Criteria to select a subset of variables from the larger set of variables used in the polynomial model of degree 3. We compare all possible sub-models and pick the one that fits best the data. 
-
 ```{r}
-modelF2<- step(lm(Criminals_100k ~ BeerAle_100k+ SchoolAttendance_10k+ WorshipAttendance_2k+I(BeerAle_100k^2)+ I(SchoolAttendance_10k^2)+ I(WorshipAttendance_2k^2)+I(BeerAle_100k^3)+ I(SchoolAttendance_10k^3)+ I(WorshipAttendance_2k^3), data=data),direction="backward", trace=0)
+#modelF2<- step(lm(Criminals_100k ~ BeerAle_100k+ SchoolAttendance_10k+ WorshipAttendance_2k+I(BeerAle_100k^2)+ I(SchoolAttendance_10k^2)+ I(WorshipAttendance_2k^2)+I(BeerAle_100k^3)+ I(SchoolAttendance_10k^3)+ I(WorshipAttendance_2k^3), data=data),direction="backward", trace=0)
 
 
 
