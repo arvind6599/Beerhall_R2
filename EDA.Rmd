@@ -260,7 +260,7 @@ mean_error <- mean(residuals)
 
 ```
 
-We compute our model residuals mean and get : `r (print(mean_error))`
+We compute our model residuals mean and get : `r (print(mean_error))`, which is very close to 0 as needed.
 
 
 #### Homoscedastic error term 
@@ -273,7 +273,7 @@ plot(model, which = 1, main = " ", sub.caption=" ")
 
 
 
-We see from the plot above that our residuals are almost homoscedastic.
+We see in the plot above that our residuals seem to be uniformly scattered. There apperears some clustering in the center, however, this is to be expected from a uniform distribution and the amount of data points we posses. This implies that are data is almost homoscedastic.
 
 
 #### Checking if Error Terms are Uncorrelated 
@@ -290,7 +290,7 @@ dw<-dwtest(model)
 
 
 ```
-Both the Autocorrelation function plot and the Durbin-Watson test (with autocorrelation `r (cat(dw$r,"\n"))` and p-value `r (cat(dw$p,"\n"))` ) suggest that we have a weak positive autocorrelation at lag 1. It may be due to an omitted variable bias, as it is specified in our reference paper that criminality and especially sentences depend of the region if it is crowded or not and therefore the law is strictly applied or not.
+Both the Autocorrelation function plot and the Durbin-Watson test (with autocorrelation `r (cat(dw$r,"\n"))` and p-value `r (cat(dw$p,"\n"))` ) suggest that we have a weak positive autocorrelation at lag 1. It may be due to an omitted variable bias, as it is specified in our reference paper that criminality and especially sentences depend of the region since if it is crowded the law tends to be more strictly applied.
 
 
 #### Error terms are normally distributed
@@ -304,7 +304,9 @@ qqline(residuals(model))
 ```
 
 
-Given that our data set is small, we can assume from the Normal QQ plot that our residuals are approximately normally distributed
+We notice the points in the QQ-plot mostly follows the diagonal with some discrepencies at the lower end. Given that our data set is small, we can assume from the Normal QQ plot that our residuals are approximately normally distributed.
+
+Overall, we tend to see some minor indication that not all conditions needed for the models are perfectly met. However, given the amount of data points and that the deviations are not too noticible we beliweve that all conditions are approximately met and our model fitting is robust enough but some biases might be present.
 
 
 ## Conclusion
