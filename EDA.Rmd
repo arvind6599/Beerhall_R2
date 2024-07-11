@@ -97,7 +97,7 @@ corrplot(cor(numeric_data), method = "number")
 
 There appears to be negligible linear dependence between worship attendance and criminality. School attendance is slightly negatively correlated with the prevalence of crime. Criminal behavior is positively correlated with `BeerAle_100k` with a correlation coefficient of 0.46, suggesting that counties with a more dominant culture of frequenting bars and pubs are also where more crime happens. In order to better visualize these dependencies, we regress `Criminals_100k` on each of these variables.
 
-```{r, fig.width=5, fig.height=3.5, fig.align='center',fig.cap="Regression plots of Criminals_100k on the other variables", message=FALSE, warning=FALSE}
+```{r, fig.width=5, fig.height=3.5, fig.align='center', fig.cap="Regression plots of Criminals per 100k on the other variables", fig.pos='H', message=FALSE, warning=FALSE}
 # regression plots
 fig1 <- ggplot(data, aes(BeerAle_100k, Criminals_100k)) + geom_point() +
   stat_smooth(method = "lm")
@@ -113,7 +113,7 @@ ggarrange(fig1, fig2, fig3, fig4)
 
 There appears to be a very clear linear dependence of criminal behaviour on bar attendance, with most data points falling within the 95% confidence interval of the regression line. There is high variation of criminality across school attendance and worship attendance.
 
-## Model Fitting
+# Model Fitting
 
 We use least squares to minimize the sum of squared residuals in a polynomial regression. In order to predict `Criminals_100k`, we use a polynomial regression model which uses `BeerAle_100k`, `SchoolAttendance_10k`, and `WorshipAttendance_2k` as the features. We include the variable `WorshipAttendance_2k` in our analysis even though it has no correlation with the variable `Criminals_100k` in order to capture any non-linear association.
 
@@ -174,9 +174,9 @@ legend("topleft", legend=c("L1O"),
 
 
 ```
-Note that the regression estimates suggest that most coefficients for polynomial terms are near 0, suggesting that these terms do not contribute significantly to the model. We further compare polynomial regression models of degrees 3 and 4 with the linear model using the Akaike Information Criterion (AIC) and the Bayesian Information Criterion. These are both measures to compare different models in order to determine which fits the data best, while penalizing the complexity of the model. They are calculated based on the number of parameters in the model and the likelihood of the model. The respective mathematical formulations are as follows:
-\[\text{AIC} = 2k-2\text{ln}(L)\\
-\text{BIC} = k\text{ln}(n)-2\text{ln}(L)\]
+We further compare polynomial regression models of degrees 3 and 4 with the linear model using the Akaike Information Criterion (AIC) and the Bayesian Information Criterion. These are both measures to compare different models in order to determine which fits the data best, while penalizing the complexity of the model. They are calculated based on the number of parameters in the model and the likelihood of the model. The respective mathematical formulations are as follows:
+\[\text{AIC} = 2k-2\text{ln}(L)\]
+\[\text{BIC} = k\text{ln}(n)-2\text{ln}(L)\]
 where in both cases, $k$ is the number of parameters and $L$ is the maximum likelihood of the model. $n$ is the number of observations. As we can see, BIC penalizes the number of parameters more strictly, and in proportion to the number of observations. It thus yields sparser models with fewer predictors.
 
 ```{r}
@@ -193,51 +193,17 @@ kable(merged_table, caption ="Information Criteria")
 
 ```
 
-```{r}
-#lr_test<-lrtest(modelF,modelF1)
-
-#chisq<- lr_test$Chisq[2]
-#pr<-lr_test$`Pr(>Chisq)`[2]
-
-#lr_results<-data.frame(
-#  Model=c("Degree 3 polynomial", "Degree 4 polynomial"),
-#  Df=lr_test$`#Df`,
- # LogLik=lr_test$LogLik,
- # Chisq=c(" ", format(chisq, digits = 3)),
- # Pr_Chisq =c(" ", sprintf("%.2e",pr))
-#)
-
-
-#lr_results$Pr_Chisq <- format(lr_results$Pr_Chisq, scientific = TRUE, digits = 2)
-
-
-
-```
-
 
 According to AIC, the higher degree polynomial models fit better the data than the simpler linear model, but by a small margin. The BIC of the linear model is the lowest, indicating that a slightly stricter penalty on the number of parameters (ln$(40)$~$3.69$) yields the linear model as the better model. Given the test results and the regression estimates, we favour parsimony of predictors, and choose the linear model for further analysis.
 
-```{r}
-
-#kable(lr_results, digits = 2, caption = "Likelihood Ratio Test results")
-```
-
-```{r}
-#modelF2<- step(lm(Criminals_100k ~ BeerAle_100k+ SchoolAttendance_10k+ WorshipAttendance_2k+I(BeerAle_100k^2)+ I(SchoolAttendance_10k^2)+ I(WorshipAttendance_2k^2)+I(BeerAle_100k^3)+ I(SchoolAttendance_10k^3)+ I(WorshipAttendance_2k^3), data=data),direction="backward", trace=0)
-
-
-
-```
-
-
 
 We get the following model:
-$\hat{y} = \beta_0 + \beta_{1}x_1 + \beta_{2}x_2 + \beta_{3}x_3 $
+\[ \hat{y} = \beta_0 + \beta_{1}x_1 + \beta_{2}x_2 + \beta_{3}x_3 \]
 
-Where $\hat{y}$ is the predicted `Criminals_100k` population, and $x_1$, $x_2$, and $x_3$ represent `BeerAle_100k`, `SchoolAttendance_10k` and `WorshipAttendance_2k` respectively. The regression coefficients $\beta_0$ and $\beta_{ij}$ are estimated in Table 5.
+Where $\hat{y}$ is the predicted `Criminals_100k` population, and $x_1$, $x_2$, and $x_3$ represent `BeerAle_100k`, `SchoolAttendance_10k` and `WorshipAttendance_2k` respectively. The regression coefficients $\beta_0$ and $\beta_{ij}$ are estimated in Table 4.
 ¨
  
-```{r model-summary, results='asis'}
+```{r model-summary, fig.pos='H', results='asis'}
 summary_stats <- summary(model)
 kable(summary_stats$coefficients, caption = "Regression Model Summary", format = "latex", booktabs = TRUE, 
       col.names = c("Estimate", "Std. Error", "t value", "Pr(>|t|)"), digits = 3)
@@ -245,11 +211,11 @@ kable(summary_stats$coefficients, caption = "Regression Model Summary", format =
 
   
 
-## Model assessment
+# Model assessment
 
 In this section, we will verify the conditions for our regressions model to hold, namely that our residuals have zero mean, are uncorrelated, are homoscedastic and are normally distributed.
 
-### Zero mean error terms
+## *Zero mean error terms*
 
 ```{r}
 # Get residuals from the model
@@ -260,12 +226,12 @@ mean_error <- mean(residuals)
 
 ```
 
-We compute our model residuals mean and get : `r (print(mean_error))`, which is very close to 0 as needed.
+We compute our model residuals mean and get : `r (print(mean_error))`, which is very close to 0 as needed.\\
 
 
-#### Homoscedastic error term 
+## *Homoscedastic error terms*
 
-```{r fig.width=5, fig.height=3.5, fig.align='center',fig.cap="Residuals vs fitted values plot", message=FALSE, warning=FALSE}
+```{r fig.width=5, fig.height=3.5, fig.align='center',fig.cap="Residuals vs fitted values plot", fig.pos='H', message=FALSE, warning=FALSE}
 # Assuming modelF2 is your regression model
 plot(model, which = 1, main = " ", sub.caption=" ")
 
@@ -273,13 +239,13 @@ plot(model, which = 1, main = " ", sub.caption=" ")
 
 
 
-We see in the plot above that our residuals seem to be uniformly scattered. There apperears some clustering in the center, however, this is to be expected from a uniform distribution and the amount of data points we posses. This implies that are data is almost homoscedastic.
+We plot residuals against fitted values and find that our residuals seem to be uniformly scattered about the mean 0. There appears some clustering in the center, however, this is to be expected from a uniform distribution and the amount of data points we posses. This implies that the data is almost homoscedastic.
 
 
-#### Checking if Error Terms are Uncorrelated 
+## *Correlation between error terms* 
 
 
-```{r fig.width=5, fig.height=3.5, fig.align='center',fig.cap="Residuals Autocorrelation function", message=FALSE, warning=FALSE}
+```{r fig.width=5, fig.height=3.5, fig.align='center',fig.cap="Residuals Autocorrelation function", fig.pos='H', message=FALSE, warning=FALSE}
 #Autocorrelation function
 acf(residuals(model), main = "Series residuals")
 ```
@@ -290,26 +256,28 @@ dw<-dwtest(model)
 
 
 ```
-Both the Autocorrelation function plot and the Durbin-Watson test (with autocorrelation `r (cat(dw$r,"\n"))` and p-value `r (cat(dw$p,"\n"))` ) suggest that we have a weak positive autocorrelation at lag 1. It may be due to an omitted variable bias, as it is specified in our reference paper that criminality and especially sentences depend of the region since if it is crowded the law tends to be more strictly applied.
+The Autocorrelation Function (ACF) plot displays the correlation between the residuals at different lags, with the vertical bars representing the autocorrelation coefficients and the horizontal blue dashed lines representing 95\% confidence intervals for the coefficients. At lag 0, the autocorrelation is always 1 as expected. For other lags, since most of the bars are within the 95\% confidence interval band, we conclude that the residuals have little to no significant autocorrelation for most lags. Since the bar at lag 1 extends slightly beyond the confidence interval, there may be minor autocorrelation at lag 1, which we confirm by calculating its Durbin-Watson statistic.
+
+Both the autocorrelation function plot and the Durbin-Watson test (with autocorrelation `r (cat(dw$r,"\n"))` and p-value `r (cat(dw$p,"\n"))` ) suggest that we have a weak positive autocorrelation at lag 1. It may be due to an omitted variable bias, as it is specified in our reference paper that criminality and especially sentences depend of the region since if it is crowded the law tends to be more strictly applied.
 
 
-#### Error terms are normally distributed
+## Distribution of error terms
 
 
 
-```{r fig.width=4.5, fig.height=4.5, fig.align='center',fig.cap="Q-Q plot", message=FALSE, warning=FALSE}
+```{r fig.width=4.5, fig.height=4.5, fig.align='center',fig.cap="Q-Q plot", fig.pos='H', message=FALSE, warning=FALSE}
 # Q-Q plot of residuals
 qqnorm(residuals(model))
 qqline(residuals(model))
 ```
 
 
-We notice the points in the QQ-plot mostly follows the diagonal with some discrepencies at the lower end. Given that our data set is small, we can assume from the Normal QQ plot that our residuals are approximately normally distributed.
+We notice the points in the QQ-plot mostly follows the diagonal with some discrepancies at the lower end. Given that our data set is small, we can assume from the Normal QQ plot that our residuals are approximately normally distributed.
 
-Overall, we tend to see some minor indication that not all conditions needed for the models are perfectly met. However, given the amount of data points and that the deviations are not too noticible we beliweve that all conditions are approximately met and our model fitting is robust enough but some biases might be present.
+Overall, we tend to see some minor indication that not all conditions needed for the models are perfectly met. However, given the amount of data points and that the deviations are not too noticeable we believe that all conditions are approximately met and our model fitting is robust enough but some biases might be present.
 
 
-## Conclusion
+# Conclusion
 
 Our analysis begins with exploratory data analysis, and it made some key observations. "Criminals per 100k" had a positive correlation(=0.46) with "Ale/Beer houses per 100k", a negative correlation(=0.23) with "Attendants at school per 10k", and a very insignificant correlation with "Attendants at public worship per 2k". To investigate non-linear relations, we choose a polynomial regression model and compared its performance with that of a linear regression model. We used leave-one-out cross validation to select polynomials of degrees 3 and 4 for our polynomial regression model. Models with degrees 3,4 both have a lower AIC than the linear regression model indicating a better fit, of which we finally chose a degree 3 model, based on the results from the likelihood ratio test.
 
